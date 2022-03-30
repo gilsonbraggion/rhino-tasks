@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<h1>General page (Spring Security protected)</h1>
+
+			<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+			<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

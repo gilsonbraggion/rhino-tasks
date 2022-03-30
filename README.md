@@ -1,2 +1,3 @@
-# atividades
-Projeto para controle de atividades
+# rhino-tasks
+Project to follow up daily activities
+
