@@ -25,7 +25,6 @@ public class DataBaseController {
 		
 		userRepo.deleteAll();
 
-
 		Role roleAdmin = new Role();
 		roleAdmin.setName("ADMIN");
 		
