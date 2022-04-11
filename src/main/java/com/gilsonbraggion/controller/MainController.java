@@ -18,12 +18,12 @@ public class MainController {
 
 	@GetMapping(value = "/admin")
 	public String admin() {
-		return "/admin/admin";
+		return "admin/admin";
 	}
 	
 	@GetMapping(value = "/403")
 	public String error403() {
-		return "/error/403";
+		return "error/403";
 	}
 	
 //	@GetMapping(value = "/error")
