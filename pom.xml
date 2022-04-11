@@ -107,6 +107,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>rhino-contas</finalName>
 	</build>
 
 </project>
