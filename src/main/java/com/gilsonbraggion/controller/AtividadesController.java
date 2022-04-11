@@ -19,7 +19,7 @@ public class AtividadesController {
 	public String getAtividades(Model model) {
 		model.addAttribute("listagem", repo.findAll());
 
-		return "/logged/atividades/listagem";
+		return "logged/atividades/listagem";
 	}
 
 }
