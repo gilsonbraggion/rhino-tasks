@@ -1,7 +1,6 @@
 package com.gilsonbraggion.model;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +17,7 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID id;
+	private Long id;
 
 	private String name;
 

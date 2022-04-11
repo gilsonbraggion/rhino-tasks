@@ -21,24 +21,14 @@ public class MainController {
 		return "/admin/admin";
 	}
 	
-	@GetMapping(value = "/user")
-	public String user() {
-		return "/user/user";
-	}
-	
-	@GetMapping(value = "/general")
-	public String general() {
-		return "/general/general";
-	}
-	
 	@GetMapping(value = "/403")
 	public String error403() {
 		return "/error/403";
 	}
 	
-	@GetMapping(value = "/error")
-	public String error() {
-		return "/error/erro";
-	}
+//	@GetMapping(value = "/error")
+//	public String error() {
+//		return "/error/erro";
+//	}
 	
 }
