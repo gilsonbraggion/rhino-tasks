@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+
+
+<div class="container text-center">
+
+		<div class="starter-template">
+			<h1>
+				Listagem de Tipos de Atividades <a th:href="@{/tipoAtividade/novo}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+			</h1>
+		</div>
+
+		<table class="table table-responsive table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="col-sm-5">Nome</th>
+					<th class="col-sm-5">Observações</th>
+					<th class="col-sm-2">Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${listagem}">
+					<td th:utext="${item.nome}"></td>
+					<td th:utext="${item.observacoes}"></td>
+					<td class="text-center">
+						<a th:href="@{/tipoAtividade/editar} +'?id=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> <a th:href="@{/tipoAtividade/remover} +'?id=' +${item.id}"> <i
+								class="fa fa-remove"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

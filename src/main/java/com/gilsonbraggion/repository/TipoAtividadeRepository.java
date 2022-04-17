@@ -6,13 +6,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gilsonbraggion.model.Atividade;
+import com.gilsonbraggion.model.TipoAtividade;
 
 @Repository
-public interface AtividadeRepository extends JpaRepository<Atividade, Long> {
+public interface TipoAtividadeRepository extends JpaRepository<TipoAtividade, Long> {
 
 	@Override
-	@Cacheable("atividades")
-	public List<Atividade> findAll();
-
+	@Cacheable("tipoAtividades")
+	public List<TipoAtividade> findAll();
 }
