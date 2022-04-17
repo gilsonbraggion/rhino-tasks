@@ -29,8 +29,8 @@
 					<td th:utext="${item.nome}"></td>
 					<td th:utext="${item.observacoes}"></td>
 					<td class="text-center">
-						<a th:href="@{/tipoAtividade/editar} +'?id=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> <a th:href="@{/tipoAtividade/remover} +'?id=' +${item.id}"> <i
-								class="fa fa-remove"></i></a>
+						<a th:href="@{/tipoAtividade/editar} +'?idTipoAtividade=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+						<a th:href="@{/tipoAtividade/remover} +'?idTipoAtividade=' +${item.id}"> <i class="fa fa-remove"></i></a>
 					</td>
 				</tr>
 			</tbody>
