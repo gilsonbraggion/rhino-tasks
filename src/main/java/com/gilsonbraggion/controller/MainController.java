@@ -25,10 +25,5 @@ public class MainController {
 	public String error403() {
 		return "error/403";
 	}
-	
-//	@GetMapping(value = "/error")
-//	public String error() {
-//		return "/error/erro";
-//	}
-	
+		
 }

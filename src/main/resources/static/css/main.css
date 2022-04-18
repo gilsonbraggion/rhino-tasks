@@ -4,14 +4,30 @@ h1{
 	color:#0000FF;
 }
 
-h2{
+h2 {
 	color:#FF0000;
 }
 
-footer{
+h3 {
+	color:#696969;
+}
+
+footer {
     margin-top:60px;
 }
 
 .topSpace {
 	margin-top: 40px;
 }
+
+button {
+	margin-top: 15px;
+}
+
+.starter-template {
+	margin-top: 15px;
+}
+
+/* .fa {
+	color:#696969;
+} */

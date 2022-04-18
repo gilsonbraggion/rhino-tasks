@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Tipo Atividade <a th:href="@{/atividade}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${atividade}" class="form-vertical  js-form-loading" th:action="@{/atividade/salvar}">
+			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{dataCriacao}" />
+
+			<div class="alert alert-danger text-center" role="alert" th:if="${mensagem}">
+				<span th:utext="${mensagem}"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4 form-group">
+					<label>Texto</label>
+					<input type="text" th:field="*{texto}" class="form-control" autofocus="autofocus" />
+				</div>
+
+				<div class="col-sm-2 form-group">
+					<label>Envolvidos</label>
+					<input type="text" th:field="*{envolvidos}" class="form-control" />
+				</div>
+
+				<div class="col-sm-2 form-group">
+					<label>Tipo Atividade</label>
+					<select class="form-select" name="idTipoAtividade">
+						<option th:each="item : ${listagemTipo}" th:label="${item.nome}" th:value="${item.id}" th:selected="${item.id == atividade.tipoAtividade.id}" />
+					</select>
+
+				</div>
+
+				<div class="col-sm-2 form-group">
+					<label>Data execução </label>
+					<input type="text" th:field="*{{dataExecucao}}" class="form-control datepicker" />
+				</div>
+
+				<div class="col-sm-2 form-group">
+					<label>Data finalizacao</label>
+					<input type="text" th:field="*{{dataFinalizacao}}" class="form-control datepicker" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12 form-group">
+					<label>Observações</label>
+					<input type="text" th:field="*{observacoes}" class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group text-center">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
