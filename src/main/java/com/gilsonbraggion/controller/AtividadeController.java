@@ -45,6 +45,16 @@ public class AtividadeController {
 		return "logged/atividade/cadastro";
 	}
 
+	@GetMapping(value = "/filtrar")
+	public String filtro(TipoAtividade tipoAtividade, Model model) {
+
+		List<Atividade> listagem = repo.findByTipoAtividadeOrderByDataExecucaoAsc(tipoAtividade);
+		model.addAttribute("listagem", listagem);
+		model.addAttribute("tipoAtividade", tipoAtividade);
+		
+		return "logged/atividade/listagem";
+	}
+
 	@GetMapping(value = "/editar")
 	private String editar(Long idAtividade, RedirectAttributes atributo) {
 		Atividade atividade = repo.findById(idAtividade).orElse(null);
@@ -54,11 +64,11 @@ public class AtividadeController {
 
 	@PostMapping(value = "/salvar")
 	public String salvar(Atividade atividade, Model model) {
-		
+
 		TipoAtividade tipoAtividade = repoTipo.findById(atividade.getIdTipoAtividade()).orElse(null);
 		atividade.setTipoAtividade(tipoAtividade);
 		atividade.setDataCriacao(new Date());
-		
+
 		repo.save(atividade);
 		return "redirect:/atividade";
 	}

@@ -48,4 +48,13 @@ public class TipoAtividadeController {
 		return "redirect:/tipoAtividade";
 	}
 
+	@GetMapping(value = "/filtrar")
+	private String filtrar(Long idTipoAtividade, RedirectAttributes atributo) {
+
+		TipoAtividade tipoAtividade = repo.findById(idTipoAtividade).orElse(null);
+		atributo.addFlashAttribute("tipoAtividade", tipoAtividade);
+		
+		return "redirect:/atividade/filtrar";
+	}
+	
 }

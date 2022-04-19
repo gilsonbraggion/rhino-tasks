@@ -24,8 +24,21 @@ button {
 	margin-top: 15px;
 }
 
+.littleTopSpace {
+	margin-top: 15px;
+}
+
+
 .starter-template {
 	margin-top: 15px;
+}
+
+.card-header {
+	background-color: #4682B4;
+}
+
+.headerTabelaInicial {
+	background-color: #ADD8E6;
 }
 
 /* .fa {

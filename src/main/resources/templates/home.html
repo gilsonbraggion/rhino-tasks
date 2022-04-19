@@ -4,19 +4,49 @@
 </head>
 <body>
 
-<div th:replace="fragments/header :: header"></div>
+	<div th:replace="fragments/header :: header"></div>
 
-<div class="container">
+	<div class="container-fluid">
+		<!-- /.container -->
 
-    <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
-        <h2>Carregar as atividades vencendo para o dia</h2>
-    </div>
+		<th:block th:each="item: ${listaPainel}">
+			<div class="row littleTopSpace">
+				<th:block th:each="tipo: ${item.listaTipoAtividade}">
+					<div class="col-sm-6">
+						<div class="card">
+							<div class="card-header text-center" th:utext="${tipo.nomeTipoAtividade}" ></div>
+							<div class="card-body">
 
-</div>
-<!-- /.container -->
+								<table class="table table-responsive table-bordered table-striped" >
+									<thead class="headerTabelaInicial">
+										<tr>
+											<th class="col-sm-3">Texto</th>
+											<th class="col-sm-1">Envolvidos</th>
+											<th class="col-sm-1">Data Execução</th>
+											<th class="col-sm-1">Data Finalização</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="ativ: ${tipo.listaAtividades}">
+											<td th:utext="${ativ.texto}"></td>
+											<td th:utext="${ativ.envolvidos}"></td>
+											<td th:utext="${{ativ.dataExecucao}}"></td>
+											<td th:utext="${{ativ.dataFinalizacao}}"></td>
+										</tr>
+									</tbody>
+								</table>
 
-<div th:replace="fragments/footer :: footer"> </div>
+							</div>
+						</div>
+					</div>
+				</th:block>
+			</div>
+		</th:block>
+
+		<!-- /.container -->
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 </html>
