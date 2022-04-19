@@ -36,7 +36,7 @@
 				<div class="col-sm-2 form-group">
 					<label>Tipo Atividade</label>
 					<select class="form-select" name="idTipoAtividade">
-						<option th:each="item : ${listagemTipo}" th:label="${item.nome}" th:value="${item.id}" th:selected="${item.id == atividade.tipoAtividade.id}" />
+						<option th:each="item : ${listagemTipo}" th:label="${item.nome}" th:value="${item.id}" th:selected="${item.id == atividade.tipoAtividade?.id}" />
 					</select>
 
 				</div>
