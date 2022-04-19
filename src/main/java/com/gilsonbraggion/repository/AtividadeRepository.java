@@ -10,7 +10,6 @@ import com.gilsonbraggion.model.Atividade;
 @Repository
 public interface AtividadeRepository extends JpaRepository<Atividade, Long> {
 
-	@Override
-	public List<Atividade> findAll();
+	public List<Atividade> findByOrderByDataExecucaoAsc();
 
 }

@@ -35,7 +35,7 @@ public class AtividadeController {
 
 	@GetMapping
 	public String get(Model model) {
-		List<Atividade> lista = repo.findAll();
+		List<Atividade> lista = repo.findByOrderByDataExecucaoAsc();
 		model.addAttribute("listagem", lista);
 		return "logged/atividade/listagem";
 	}
