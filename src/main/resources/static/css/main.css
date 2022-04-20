@@ -41,6 +41,14 @@ button {
 	background-color: #ADD8E6;
 }
 
-/* .fa {
-	color:#696969;
-} */
+.atividadeConcluida {
+	background-color: #7FFFD4 !important;
+}
+
+.atividadeVencida {
+	background-color: #FAFAD2 !important;
+}
+
+.atividadeFutura {
+	background-color: #E0FFFF !important;	
+}

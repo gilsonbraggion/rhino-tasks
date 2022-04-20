@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.gilsonbraggion.Util;
+
 import lombok.Data;
 
 @Entity
@@ -44,5 +46,13 @@ public class Atividade {
 
 	@Transient
 	private Long idTipoAtividade;
+	
+	@Transient
+	private String estiloLinha;
+	
+	public String getEstiloLinha() {
+		return Util.getEstiloLinha(this);
+	}
+
 
 }

@@ -28,8 +28,8 @@
 					<th class="col-sm-1">Opções</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr th:each="item : ${listagem}">
+			<tbody th:each="item : ${listagem}">
+				<tr th:classappend="${item.estiloLinha}">
 					<td th:utext="${item.texto}"></td>
 					<td th:utext="${item.envolvidos}"></td>
 					<td th:utext="${item.tipoAtividade?.nome}"></td>

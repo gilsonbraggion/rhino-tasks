@@ -27,7 +27,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="ativ: ${tipo.listaAtividades}">
+										<tr th:each="ativ: ${tipo.listaAtividades}" th:classappend="${ativ.estiloLinha}">
 											<td th:utext="${ativ.texto}"></td>
 											<td th:utext="${ativ.envolvidos}"></td>
 											<td th:utext="${{ativ.dataExecucao}}"></td>
