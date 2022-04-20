@@ -52,3 +52,7 @@ button {
 .atividadeFutura {
 	background-color: #E0FFFF !important;	
 }
+
+.diagonal-gradient {
+  background: linear-gradient(to bottom right, green, white);
+}
