@@ -42,7 +42,7 @@ public class HomeController {
 
 			TipoAtividadeBean bean = new TipoAtividadeBean();
 			bean.setNomeTipoAtividade(tipoAtividade.getNome());
-			bean.setListaAtividades(ativRepo.findByTipoAtividadeOrderByDataExecucaoAsc(tipoAtividade));
+			bean.setListaAtividades(ativRepo.findByTipoAtividadeAndDataFinalizacaoIsNullOrderByDataExecucaoAsc(tipoAtividade));
 			listaInternaBean.add(bean);
 
 			if (i % 2 != 0) {
