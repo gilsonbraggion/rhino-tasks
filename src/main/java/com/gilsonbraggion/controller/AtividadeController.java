@@ -1,6 +1,5 @@
 package com.gilsonbraggion.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +50,7 @@ public class AtividadeController {
 		List<Atividade> listagem = repo.findByTipoAtividadeAndDataFinalizacaoIsNullOrderByDataExecucaoAsc(tipoAtividade);
 		model.addAttribute("listagem", listagem);
 		model.addAttribute("tipoAtividade", tipoAtividade);
-		
+
 		return "logged/atividade/listagem";
 	}
 
@@ -67,7 +66,6 @@ public class AtividadeController {
 
 		TipoAtividade tipoAtividade = repoTipo.findById(atividade.getIdTipoAtividade()).orElse(null);
 		atividade.setTipoAtividade(tipoAtividade);
-		atividade.setDataCriacao(new Date());
 
 		repo.save(atividade);
 		return "redirect:/atividade";

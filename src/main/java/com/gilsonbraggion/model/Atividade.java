@@ -3,12 +3,14 @@ package com.gilsonbraggion.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -27,6 +29,7 @@ public class Atividade {
 
 	private String texto;
 
+	@Column(name = "dataCriacao", updatable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataCriacao;
 
@@ -46,13 +49,17 @@ public class Atividade {
 
 	@Transient
 	private Long idTipoAtividade;
-	
+
 	@Transient
 	private String estiloLinha;
-	
+
 	public String getEstiloLinha() {
 		return Util.getEstiloLinha(this);
 	}
 
+	@PrePersist
+	public void prePersist() {
+		dataCriacao = new Date();
+	}
 
 }

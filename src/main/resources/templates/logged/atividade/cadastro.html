@@ -16,7 +16,6 @@
 
 		<form method="POST" th:object="${atividade}" class="form-vertical  js-form-loading" th:action="@{/atividade/salvar}">
 			<input type="hidden" th:field="*{id}" />
-			<input type="hidden" th:field="*{dataCriacao}" />
 
 			<div class="alert alert-danger text-center" role="alert" th:if="${mensagem}">
 				<span th:utext="${mensagem}"></span>
