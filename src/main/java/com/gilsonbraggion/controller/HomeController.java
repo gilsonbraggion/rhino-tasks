@@ -49,19 +49,15 @@ public class HomeController {
 
 				iterador++;
 
-			} else if (i + 1 == listagemTipo.size()) {
-				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
-				listaPainel.add(painel);
-				listaInternaBean.clear();
-
 			} else {
 				continue;
 			}
 
-			if (i + 1 != listagemTipo.size()) {
+			if (i + 1 == listagemTipo.size()) {
 				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
 				listaPainel.add(painel);
 				listaInternaBean.clear();
+
 			}
 		}
 
