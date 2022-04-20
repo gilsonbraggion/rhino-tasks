@@ -14,7 +14,7 @@ public class Util {
 		
 		boolean contaVencida = atividade.getDataExecucao().compareTo(dataAtualPlus5) < 0;
 
-		if (atividade.getDataFinalizacao() != null) {
+		if (atividade.getFinalizado() != null && atividade.getFinalizado()) {
 			return "atividadeConcluida";
 		} else if (contaVencida) {
 			return "atividadeVencida";

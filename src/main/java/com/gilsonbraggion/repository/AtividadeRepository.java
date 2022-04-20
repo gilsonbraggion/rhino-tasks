@@ -15,6 +15,6 @@ public interface AtividadeRepository extends JpaRepository<Atividade, Long> {
 
 	public List<Atividade> findByTipoAtividadeOrderByDataExecucaoAsc(TipoAtividade tipoAtividade);
 	
-	public List<Atividade> findByTipoAtividadeAndDataFinalizacaoIsNullOrderByDataExecucaoAsc(TipoAtividade tipoAtividade);
+	public List<Atividade> findByTipoAtividadeAndFinalizadoIsNullOrFinalizadoFalseOrderByDataExecucaoAsc(TipoAtividade tipoAtividade);
 
 }

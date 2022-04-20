@@ -42,9 +42,11 @@ public class Atividade {
 	private String envolvidos;
 
 	private String observacoes;
+	
+	private Boolean finalizado;
 
 	@JoinColumn(name = "tipoAtividadeId")
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(optional = false)
 	private TipoAtividade tipoAtividade;
 
 	@Transient
@@ -53,6 +55,9 @@ public class Atividade {
 	@Transient
 	private String estiloLinha;
 
+	@Transient
+	private boolean fromHome;
+	
 	public String getEstiloLinha() {
 		return Util.getEstiloLinha(this);
 	}

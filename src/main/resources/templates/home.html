@@ -28,7 +28,7 @@
 									</thead>
 									<tbody>
 										<tr th:each="ativ: ${tipo.listaAtividades}" th:classappend="${ativ.estiloLinha}">
-											<td th:utext="${ativ.texto}"></td>
+											<td><a th:href="@{/atividade/editar} +'?idAtividade=' +${ativ.id} + '&fromHome='+'true'" th:utext="${ativ.texto}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a></td>
 											<td th:utext="${ativ.envolvidos}"></td>
 											<td th:utext="${{ativ.dataExecucao}}"></td>
 											<td th:utext="${{ativ.dataFinalizacao}}"></td>

@@ -23,7 +23,8 @@
 					<th class="col-sm-1">Data Criação</th>
 					<th class="col-sm-1">Data Execução</th>
 					<th class="col-sm-1">Data Finalização</th>
-					<th class="col-sm-3">Observações</th>
+					<th class="col-sm-1">Finalizado</th>
+					<th class="col-sm-2">Observações</th>
 					<th class="col-sm-1">Opções</th>
 				</tr>
 			</thead>
@@ -35,6 +36,7 @@
 					<td th:utext="${{item.dataCriacao}}"></td>
 					<td th:utext="${{item.dataExecucao}}"></td>
 					<td th:utext="${{item.dataFinalizacao}}"></td>
+					<td th:utext="${item.finalizado} ? 'Sim' : 'Não'"></td>
 					<td th:utext="${item.observacoes}"></td>
 					<td class="text-center">
 						<a th:href="@{/atividade/editar} +'?idAtividade=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> <a

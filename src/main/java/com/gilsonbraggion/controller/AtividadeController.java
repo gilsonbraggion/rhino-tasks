@@ -47,7 +47,7 @@ public class AtividadeController {
 	@GetMapping(value = "/filtrar")
 	public String filtro(TipoAtividade tipoAtividade, Model model) {
 
-		List<Atividade> listagem = repo.findByTipoAtividadeAndDataFinalizacaoIsNullOrderByDataExecucaoAsc(tipoAtividade);
+		List<Atividade> listagem = repo.findByTipoAtividadeAndFinalizadoIsNullOrFinalizadoFalseOrderByDataExecucaoAsc(tipoAtividade);
 		model.addAttribute("listagem", listagem);
 		model.addAttribute("tipoAtividade", tipoAtividade);
 
@@ -55,8 +55,10 @@ public class AtividadeController {
 	}
 
 	@GetMapping(value = "/editar")
-	private String editar(Long idAtividade, RedirectAttributes atributo) {
+	private String editar(Long idAtividade, boolean fromHome, RedirectAttributes atributo) {
 		Atividade atividade = repo.findById(idAtividade).orElse(null);
+		atividade.setFromHome(fromHome);
+		
 		atributo.addFlashAttribute("atividade", atividade);
 		return "redirect:/atividade/novo";
 	}
@@ -68,7 +70,12 @@ public class AtividadeController {
 		atividade.setTipoAtividade(tipoAtividade);
 
 		repo.save(atividade);
-		return "redirect:/atividade";
+		
+		if (atividade.isFromHome()) {
+			return "redirect:/home";
+		} else {
+			return "redirect:/atividade";	
+		}
 	}
 
 	@GetMapping(value = "/remover")
