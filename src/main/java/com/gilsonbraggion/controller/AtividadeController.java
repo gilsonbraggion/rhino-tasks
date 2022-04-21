@@ -47,7 +47,7 @@ public class AtividadeController {
 	@GetMapping(value = "/filtrar")
 	public String filtro(TipoAtividade tipoAtividade, Model model) {
 
-		List<Atividade> listagem = repo.findByTipoAtividadeAndFinalizadoIsNullOrFinalizadoFalseOrderByDataExecucaoAsc(tipoAtividade);
+		List<Atividade> listagem = repo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId());
 		model.addAttribute("listagem", listagem);
 		model.addAttribute("tipoAtividade", tipoAtividade);
 
