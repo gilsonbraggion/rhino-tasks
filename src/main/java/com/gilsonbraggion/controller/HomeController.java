@@ -33,6 +33,7 @@ public class HomeController {
 
 		Integer iterador = 1;
 		List<TipoAtividadeBean> listaInternaBean = new ArrayList<>();
+
 		for (int i = 0; i < listagemTipo.size(); i++) {
 
 			PainelBean painel = new PainelBean();
@@ -42,7 +43,7 @@ public class HomeController {
 
 			TipoAtividadeBean bean = new TipoAtividadeBean();
 			bean.setNomeTipoAtividade(tipoAtividade.getNome());
-			bean.setListaAtividades(ativRepo.findByTipoAtividadeAndFinalizadoIsNullOrFinalizadoFalseOrderByDataExecucaoAsc(tipoAtividade));
+			bean.setListaAtividades(ativRepo.findByTipoAtividadeOrderByDataExecucaoAsc(tipoAtividade));
 			listaInternaBean.add(bean);
 
 			if (i % 2 != 0) {

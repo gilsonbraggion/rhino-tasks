@@ -2,7 +2,6 @@ package com.gilsonbraggion.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,7 +41,7 @@ public class Atividade {
 	private String envolvidos;
 
 	private String observacoes;
-	
+
 	private Boolean finalizado;
 
 	@JoinColumn(name = "tipoAtividadeId")
@@ -57,7 +56,7 @@ public class Atividade {
 
 	@Transient
 	private boolean fromHome;
-	
+
 	public String getEstiloLinha() {
 		return Util.getEstiloLinha(this);
 	}
