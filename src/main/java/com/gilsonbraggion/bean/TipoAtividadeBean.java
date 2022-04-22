@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class TipoAtividadeBean {
 
+	private Long idTipoAtividade;
 	private String nomeTipoAtividade;
 	private List<Atividade> listaAtividades;
 }

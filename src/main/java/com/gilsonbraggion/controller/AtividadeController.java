@@ -1,6 +1,7 @@
 package com.gilsonbraggion.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,22 @@ public class AtividadeController {
 		return "logged/atividade/cadastro";
 	}
 
+	@GetMapping(value = "/atividadeFromHome")
+	public String atividadeFromHome(Long idTipoAtividade, Model model) {
+		Atividade atividade = new Atividade();
+		atividade.setFromHome(true);
+		
+		Optional<TipoAtividade> tipoAtividade = repoTipo.findById(idTipoAtividade);
+		
+		if (tipoAtividade.isPresent()) {
+			atividade.setTipoAtividade(tipoAtividade.get());
+		}
+		
+		model.addAttribute("atividade", atividade);
+		
+		return "logged/atividade/cadastro";
+	}
+	
 	@GetMapping(value = "/filtrar")
 	public String filtro(TipoAtividade tipoAtividade, Model model) {
 

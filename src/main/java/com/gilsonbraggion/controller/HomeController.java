@@ -42,6 +42,7 @@ public class HomeController {
 			TipoAtividade tipoAtividade = listagemTipo.get(i);
 
 			TipoAtividadeBean bean = new TipoAtividadeBean();
+			bean.setIdTipoAtividade(tipoAtividade.getId());
 			bean.setNomeTipoAtividade(tipoAtividade.getNome());
 			bean.setListaAtividades(ativRepo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId()));
 			listaInternaBean.add(bean);

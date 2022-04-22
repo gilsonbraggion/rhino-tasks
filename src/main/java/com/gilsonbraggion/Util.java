@@ -12,6 +12,10 @@ public class Util {
 
 		Date dataAtualPlus5 = DateUtils.addDays(new Date(), 5);
 		
+		if (atividade.getDataExecucao() == null) {
+			return "atividadeFutura";
+		}
+		
 		boolean contaVencida = atividade.getDataExecucao().compareTo(dataAtualPlus5) < 0;
 
 		if (atividade.getFinalizado() != null && atividade.getFinalizado()) {

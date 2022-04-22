@@ -14,7 +14,7 @@
 				<th:block th:each="tipo: ${item.listaTipoAtividade}">
 					<div class="col-sm-6">
 						<div class="card">
-							<div class="card-header text-center" th:utext="${tipo.nomeTipoAtividade}" ></div>
+							<div class="card-header text-center" style="color: white"> <th:block th:utext="${tipo.nomeTipoAtividade}"> </th:block> <a style="color: white" th:href="@{/atividade/atividadeFromHome} + '?idTipoAtividade=' + ${tipo.idTipoAtividade}"> <i class="fa fa-plus-square-o" aria-hidden="true"></i></a></div>
 							<div class="card-body">
 
 								<table class="table table-responsive table-bordered table-striped" >
