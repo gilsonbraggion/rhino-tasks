@@ -6,8 +6,6 @@ import lombok.Data;
 
 @Data
 public class PainelBean {
-
 	private Integer iterador;
 	private List<TipoAtividadeBean> listaTipoAtividade;
-
 }
