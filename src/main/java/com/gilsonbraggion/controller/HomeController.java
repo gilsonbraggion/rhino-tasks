@@ -45,15 +45,21 @@ public class HomeController {
 			bean.setIdTipoAtividade(tipoAtividade.getId());
 			bean.setNomeTipoAtividade(tipoAtividade.getNome());
 			bean.setListaAtividades(ativRepo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId()));
+			
 			listaInternaBean.add(bean);
 
 			if (i % 2 != 0) {
 				iterador++;
-			} else {
-				continue;
+				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
+				listaPainel.add(painel);
+				listaInternaBean.clear();
+			} else if (i % 2 != 0 && i + 1 == listagemTipo.size()){
+				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
+				listaPainel.add(painel);
+				listaInternaBean.clear();
 			}
 
-			if (i + 1 == listagemTipo.size()) {
+			if (i + 1 == listagemTipo.size() && i % 2 == 0) {
 				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
 				listaPainel.add(painel);
 				listaInternaBean.clear();
