@@ -10,37 +10,44 @@
 		<!-- /.container -->
 
 		<th:block th:each="item: ${listaPainel}">
-			<div class="row littleTopSpace">
-				<th:block th:each="tipo: ${item.listaTipoAtividade}">
-					<div class="col-sm-6">
-						<div class="card">
-							<div class="card-header text-center" style="color: white"> <th:block th:utext="${tipo.nomeTipoAtividade}"> </th:block> <a style="color: white" th:href="@{/atividade/atividadeFromHome} + '?idTipoAtividade=' + ${tipo.idTipoAtividade}"> <i class="fa fa-plus-square-o" aria-hidden="true"></i></a></div>
-							<div class="card-body">
 
-								<table class="table table-responsive table-bordered table-striped" >
-									<thead class="headerTabelaInicial">
-										<tr>
-											<th class="col-sm-3">Texto</th>
-											<th class="col-sm-1">Envolvidos</th>
-											<th class="col-sm-1">Data Execução</th>
-											<th class="col-sm-1">Data Finalização</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="ativ: ${tipo.listaAtividades}" th:classappend="${ativ.estiloLinha}">
-											<td><a th:href="@{/atividade/editar} +'?idAtividade=' +${ativ.id} + '&fromHome='+'true'" th:utext="${ativ.texto}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a></td>
-											<td th:utext="${ativ.envolvidos}"></td>
-											<td th:utext="${{ativ.dataExecucao}}"></td>
-											<td th:utext="${{ativ.dataFinalizacao}}"></td>
-										</tr>
-									</tbody>
-								</table>
-
-							</div>
+			<div class="accordion" id="accordionPanelsStayOpenExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header" th:id="'panelsStayOpen-heading+${item.idTipoAtividade}'">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:attr="data-bs-target='#panelsStayOpen-collapse'+${item.idTipoAtividade}" aria-expanded="false">
+							<th:block th:utext="${item.nomeTipoAtividade}">
+							</th:block>
+						</button>
+					</h2>
+					<div th:id="'panelsStayOpen-collapse'+${item.idTipoAtividade}" class="accordion-collapse collapse"
+						th:attr="aria-labelledby='#anelsStayOpen-heading'+${item.idTipoAtividade} + ' aria-controls=panelsStayOpen-collapse'+${item.idTipoAtividade}">
+						<div class="accordion-body">
+							<table class="table table-responsive table-bordered table-striped">
+								<thead class="headerTabelaInicial">
+									<tr>
+										<th class="col-sm-3">Texto</th>
+										<th class="col-sm-1">Envolvidos</th>
+										<th class="col-sm-1">Data Execução</th>
+										<th class="col-sm-1">Data Finalização</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="ativ: ${item.listaAtividades}" th:classappend="${ativ.estiloLinha}">
+										<td>
+											<a th:href="@{/atividade/editar} +'?idAtividade=' +${ativ.id} + '&fromHome='+'true'" th:utext="${ativ.texto}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a>
+										</td>
+										<td th:utext="${ativ.envolvidos}"></td>
+										<td th:utext="${{ativ.dataExecucao}}"></td>
+										<td th:utext="${{ativ.dataFinalizacao}}"></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
-				</th:block>
+				</div>
 			</div>
+
+
 		</th:block>
 
 		<!-- /.container -->
