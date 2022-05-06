@@ -25,10 +25,12 @@
 							<table class="table table-responsive table-bordered table-striped">
 								<thead class="headerTabelaInicial">
 									<tr>
-										<th class="col-sm-3">Texto</th>
-										<th class="col-sm-1">Envolvidos</th>
+										<th class="col-sm-4">Texto</th>
+										<th class="col-sm-2">Envolvidos</th>
 										<th class="col-sm-1">Data Execução</th>
 										<th class="col-sm-1">Data Finalização</th>
+										<th class="col-sm-4">Observações</th>
+										
 									</tr>
 								</thead>
 								<tbody>
@@ -39,6 +41,7 @@
 										<td th:utext="${ativ.envolvidos}"></td>
 										<td th:utext="${{ativ.dataExecucao}}"></td>
 										<td th:utext="${{ativ.dataFinalizacao}}"></td>
+										<td th:utext="${ativ.observacoes}"></td>
 									</tr>
 								</tbody>
 							</table>
