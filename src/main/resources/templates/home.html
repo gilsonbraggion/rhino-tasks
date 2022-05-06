@@ -17,6 +17,7 @@
 						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:attr="data-bs-target='#panelsStayOpen-collapse'+${item.idTipoAtividade}" aria-expanded="false">
 							<th:block th:utext="${item.nomeTipoAtividade}">
 							</th:block>
+							<a style="margin-left: 20px;" th:href="@{/atividade/atividadeFromHome} + '?idTipoAtividade=' + ${item.idTipoAtividade}"> <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 						</button>
 					</h2>
 					<div th:id="'panelsStayOpen-collapse'+${item.idTipoAtividade}" class="accordion-collapse collapse"
@@ -30,7 +31,7 @@
 										<th class="col-sm-1">Data Execução</th>
 										<th class="col-sm-1">Data Finalização</th>
 										<th class="col-sm-4">Observações</th>
-										
+
 									</tr>
 								</thead>
 								<tbody>
