@@ -29,15 +29,15 @@ public class HomeController {
 
 		List<TipoAtividade> listagemTipo = tipoRepo.findAll();
 
-		List<PainelBean> listaPainel = new ArrayList<PainelBean>();
+//		List<PainelBean> listaPainel = new ArrayList<PainelBean>();
 
-		Integer iterador = 1;
+//		Integer iterador = 1;
 		List<TipoAtividadeBean> listaInternaBean = new ArrayList<>();
 
 		for (int i = 0; i < listagemTipo.size(); i++) {
 
 			PainelBean painel = new PainelBean();
-			painel.setIterador(iterador);
+//			painel.setIterador(iterador);
 
 			TipoAtividade tipoAtividade = listagemTipo.get(i);
 
@@ -48,28 +48,28 @@ public class HomeController {
 			
 			listaInternaBean.add(bean);
 
-			if (i % 2 != 0) {
-				iterador++;
-				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
-				listaPainel.add(painel);
-				listaInternaBean.clear();
-			} else if (i % 2 != 0 && i + 1 == listagemTipo.size()){
-				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
-				listaPainel.add(painel);
-				listaInternaBean.clear();
-			}
-
-			if (i + 1 == listagemTipo.size() && i % 2 == 0) {
-				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
-				listaPainel.add(painel);
-				listaInternaBean.clear();
-
-			}
+//			if (i % 2 != 0) {
+//				iterador++;
+//				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
+//				listaPainel.add(painel);
+//				listaInternaBean.clear();
+//			} else if (i % 2 != 0 && i + 1 == listagemTipo.size()){
+//				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
+//				listaPainel.add(painel);
+//				listaInternaBean.clear();
+//			}
+//
+//			if (i + 1 == listagemTipo.size() && i % 2 == 0) {
+//				painel.setListaTipoAtividade(listaInternaBean.stream().collect(Collectors.toList()));
+//				listaPainel.add(painel);
+//				listaInternaBean.clear();
+//
+//			}
 		}
 
-		model.addAttribute("listaPainel", listaPainel);
+		model.addAttribute("listaPainel", listaInternaBean);
 
-		return "home";
+		return "home2";
 	}
 
 }
