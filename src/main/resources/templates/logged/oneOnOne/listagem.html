@@ -31,8 +31,8 @@
 					<th class="col-sm-1">Opções</th>
 				</tr>
 			</thead>
-			<tbody th:each="item : ${listagem}">
-				<tr>
+			<tbody>
+				<tr th:each="item : ${listagem}">
 					<td th:utext="${{item.data}}"></td>
 					<td th:utext="${item.horaInicio}"></td>
 					<td th:utext="${item.horaFim}"></td>
