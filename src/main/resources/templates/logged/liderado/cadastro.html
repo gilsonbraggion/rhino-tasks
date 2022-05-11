@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Liderado <a th:href="@{/liderado}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${liderado}" class="form-vertical  js-form-loading" th:action="@{/liderado/salvar}">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="alert alert-danger text-center" role="alert" th:if="${mensagem}">
+				<span th:utext="${mensagem}"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4  form-group">
+					<label>Nome</label>
+					<input type="text" th:field="*{nome}" class="form-control" autofocus="autofocus" />
+				</div>
+
+				<div class="col-sm-4  form-group">
+					<label>Cargo</label>
+					<input type="text" th:field="*{cargo}" class="form-control" autofocus="autofocus" />
+				</div>
+
+				<div class="col-sm-4  form-group">
+					<label>Observações</label>
+					<input type="text" th:field="*{observacoes}" class="form-control" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group text-center">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

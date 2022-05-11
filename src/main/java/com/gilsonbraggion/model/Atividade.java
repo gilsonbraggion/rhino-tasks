@@ -26,6 +26,7 @@ public class Atividade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column(length = 500)
 	private String texto;
 
 	@Column(name = "dataCriacao", updatable = false)
@@ -40,6 +41,7 @@ public class Atividade {
 
 	private String envolvidos;
 
+	@Column(length = 500)
 	private String observacoes;
 
 	private Boolean finalizado;

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Reuniões <a th:href="@{/reuniao/novo}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+
+		<table class="table table-responsive table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="col-sm-2">Assunto</th>
+					<th class="col-sm-2">Envolvidos</th>
+					<th class="col-sm-1">Projeto</th>
+					<th class="col-sm-6">Observações</th>
+					<th class="col-sm-1">Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${listagem}">
+					<td th:utext="${item.assunto}"></td>
+					<td th:utext="${item.envolvidos}"></td>
+					<td th:utext="${item.projeto} ? 'Sim' : 'Não'"></td>
+					<td th:utext="${item.observacoes}"></td>
+					<td class="text-center">
+						<a th:href="@{/reuniao/editar} +'?idReuniao=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+						<a th:href="@{/reuniao/remover} +'?idReuniao=' +${item.id}"> <i class="fa fa-remove" style="padding-right: 10px;"></i></a>
+						<a th:href="@{/reuniao/filtrar} +'?idReuniao=' +${item.id}"> <i class="fa fa-list"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

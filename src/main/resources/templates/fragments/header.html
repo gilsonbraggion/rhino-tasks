@@ -14,7 +14,7 @@
 		<!-- this is header -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Tasks</a>
+				<a class="navbar-brand" th:href="@{/home}">Tasks</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -22,25 +22,44 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" th:href="@{/tipoAtividade}">Tipos de Atividades</a>
+							<a class="nav-link active" aria-current="page" th:href="@{/liderado}">Liderados</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Ações </a>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Atividades </a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li>
 									<a class="dropdown-item" th:href="@{/atividade}">Atividades</a>
 								</li>
 								<li>
-									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" th:href="@{/tipoAtividade}">Tipos de Atividades</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> One on One </a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li>
+									<a class="dropdown-item" th:href="@{/oneOnOne}">Listagem</a>
 								</li>
 								<li>
 									<hr class="dropdown-divider" />
 								</li>
 								<li>
-									<a class="dropdown-item" href="#">Something else here</a>
+									<a class="dropdown-item" href="#">Divisor</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Reuniões </a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li>
+									<a class="dropdown-item" th:href="@{/reuniao}">Listagem</a>
+								</li>
+								<li>
+									<hr class="dropdown-divider" />
+								</li>
+								<li>
+									<a class="dropdown-item" href="#">Divisor</a>
 								</li>
 							</ul>
 						</li>

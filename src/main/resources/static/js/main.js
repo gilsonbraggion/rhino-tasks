@@ -39,6 +39,8 @@ $(document).ready(function(e) {
 
 		}
 	});
+	
+	$('.mascaraHora').mask('00:00');
     
 
 });

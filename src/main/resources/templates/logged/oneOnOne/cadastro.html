@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			One on One <a th:href="@{/oneOnOne}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${oneOnOne}" class="form-vertical  js-form-loading" th:action="@{/oneOnOne/salvar}">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="alert alert-danger text-center" role="alert" th:if="${mensagem}">
+				<span th:utext="${mensagem}"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4 form-group">
+					<label>Data</label>
+					<input type="text" th:field="*{{data}}" class="form-control datepicker" />
+				</div>
+			
+				<div class="col-sm-2 form-group">
+					<label>Hora Início</label>
+					<input type="text" th:field="*{horaInicio}" class="form-control mascaraHora" />
+				</div>
+
+				<div class="col-sm-2 form-group">
+					<label>Hora Fim</label>
+					<input type="text" th:field="*{horaFim}" class="form-control mascaraHora" />
+				</div>
+			
+				<div class="col-sm-2 form-group">
+					<label>Liderado</label>
+					<select class="form-select" name="idLiderado">
+						<option th:each="item : ${listagemLiderado}" th:label="${item.nome}" th:value="${item.id}" th:selected="${item.id == oneOnOne.liderado?.id}" />
+					</select>
+				</div>
+				
+				<div class="col-sm-2 form-group">
+					<label>Realizado</label>
+					<select class="form-select" name="realizado">
+						<option value="false" >Não</option>
+						<option value="true"  th:selected="*{realizado}">Sim</option>
+					</select>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<label>Introdução</label>
+					<textarea th:field="*{introducao}" class="form-control" rows="4" maxlength="400" ></textarea>
+				</div>
+
+				<div class="col-sm-6 form-group">
+					<label>Pontos Positivos</label>
+					<textarea th:field="*{pontosPositivos}" class="form-control" rows="4" maxlength="400"></textarea>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<label>Melhorias</label>
+					<textarea th:field="*{melhorias}" class="form-control" rows="4" maxlength="400"></textarea>
+				</div>
+
+				<div class="col-sm-6 form-group">
+					<label>Feed Back Reverso</label>
+					<textarea th:field="*{feedBackReverso}" class="form-control" rows="4" maxlength="400"></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group text-center">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
