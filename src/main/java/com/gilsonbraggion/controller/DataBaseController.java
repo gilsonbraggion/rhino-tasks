@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gilsonbraggion.model.Role;
-import com.gilsonbraggion.model.User;
+import com.gilsonbraggion.model.Usuario;
 import com.gilsonbraggion.repository.RoleRepository;
 import com.gilsonbraggion.repository.UserRepository;
 
@@ -34,7 +34,7 @@ public class DataBaseController {
 
 		Role roleSaved = roleRepo.save(roleAdmin);
 
-		User userAdmin = new User();
+		Usuario userAdmin = new Usuario();
 		userAdmin.setEmail("gilson.braggion@gmail.com");
 		userAdmin.setUserName("Gilson Braggion");
 		userAdmin.setPassword(new BCryptPasswordEncoder().encode("1"));

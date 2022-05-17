@@ -14,9 +14,9 @@
 			<div class="accordion" id="accordionPanelsStayOpenExample">
 				<div class="accordion-item">
 					<h2 class="accordion-header" th:id="'panelsStayOpen-heading+${item.idTipoAtividade}'">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:attr="data-bs-target='#panelsStayOpen-collapse'+${item.idTipoAtividade}" aria-expanded="false">
-							<th:block th:utext="${item.nomeTipoAtividade}">
-							</th:block>
+						<button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" th:attr="data-bs-target='#panelsStayOpen-collapse'+${item.idTipoAtividade}" aria-expanded="false">
+							<th:block th:utext="${item.nomeTipoAtividade}"></th:block>
+							<th:block th:utext="${item.dataMaisProxima}"></th:block>
 							<a style="margin-left: 20px;" th:href="@{/atividade/atividadeFromHome} + '?idTipoAtividade=' + ${item.idTipoAtividade}"> <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 						</button>
 					</h2>

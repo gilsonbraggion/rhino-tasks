@@ -12,6 +12,7 @@ import com.gilsonbraggion.bean.TipoAtividadeBean;
 import com.gilsonbraggion.model.TipoAtividade;
 import com.gilsonbraggion.repository.AtividadeRepository;
 import com.gilsonbraggion.repository.TipoAtividadeRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 public class HomeController {
@@ -36,7 +37,12 @@ public class HomeController {
 			TipoAtividadeBean bean = new TipoAtividadeBean();
 			bean.setIdTipoAtividade(tipoAtividade.getId());
 			bean.setNomeTipoAtividade(tipoAtividade.getNome());
+
 			bean.setListaAtividades(ativRepo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId()));
+
+			if (!bean.getListaAtividades().isEmpty()) {
+				bean.setDataMaisProxima(Util.getDateString(bean.getListaAtividades().get(0).getDataExecucao()));
+			}
 
 			listaInternaBean.add(bean);
 

@@ -11,5 +11,7 @@ public class TipoAtividadeBean {
 
 	private Long idTipoAtividade;
 	private String nomeTipoAtividade;
+	
+	private String dataMaisProxima;
 	private List<Atividade> listaAtividades;
 }

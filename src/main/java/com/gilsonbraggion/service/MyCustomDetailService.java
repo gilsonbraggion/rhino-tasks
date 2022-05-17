@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.gilsonbraggion.model.User;
+import com.gilsonbraggion.model.Usuario;
 import com.gilsonbraggion.repository.UserRepository;
 
 @Service
@@ -22,12 +22,12 @@ public class MyCustomDetailService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		User user = userRepo.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Email " + username + " not found ")) ;
+		Usuario user = userRepo.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Email " + username + " not found ")) ;
 		
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getAuthorities(user));
 	}
 	
-	private static Collection<? extends GrantedAuthority> getAuthorities(User user) {
+	private static Collection<? extends GrantedAuthority> getAuthorities(Usuario user) {
 		String[] userRoles = user.getRoles().stream().map(role -> role.getName()).toArray(String[]::new);
 		
 		Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);

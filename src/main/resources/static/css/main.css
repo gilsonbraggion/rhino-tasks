@@ -34,7 +34,7 @@ button {
 }
 
 .headerTabelaInicial {
-	background-color: #ADD8E6;
+	background-color: #D3D3D3;
 }
 
 .atividadeConcluida {
@@ -51,4 +51,8 @@ button {
 
 .diagonal-gradient {
   background: linear-gradient(to bottom right, green, white);
+}
+
+.accordion-button{
+    display:block;
 }
