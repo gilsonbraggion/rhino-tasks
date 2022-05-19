@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<div class="starter-template text-center">
+			<h3>
+				One on One por datas <a th:href="@{/oneOnOne/buscar}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+			</h3>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<form th:action="@{/oneOnOne/pesquisarDatas}" th:method="POST">
+
+			<div class="row">
+				<div class="col-auto">
+					<label for="inputPassword6" class="col-form-label">Datas Realizadas</label>
+				</div>
+				<div class="col-auto">
+					<select class="form-select" name="dataSelecionada">
+						<option th:each="item : ${datas}" th:label="|${item.nomeMes} ${item.ano}|" th:value="|${item.mes} ${item.ano}|" th:selected="${item.mes == dataSelecionada?.mes && item.ano == dataSelecionada?.ano}" />
+					</select>
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary">Pesquisar</button>
+				</div>
+			</div>
+
+		</form>
+
+		<div class="topSpace" th:if="${listagem}">
+			<table class="table table-responsive table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="col-sm-1">Data</th>
+						<th class="col-sm-1">Hora Inicio</th>
+						<th class="col-sm-1">Data Fim</th>
+						<th class="col-sm-1">Liderado</th>
+						<th class="col-sm-1">Introdução</th>
+						<th class="col-sm-1">Pontos Positivos</th>
+						<th class="col-sm-1">Melhorias</th>
+						<th class="col-sm-1">Feed Back Reverso</th>
+						<th class="col-sm-1">Realizado</th>
+						<th class="col-sm-1">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${listagem}">
+						<td th:utext="${{item.data}}"></td>
+						<td th:utext="${item.horaInicio}"></td>
+						<td th:utext="${item.horaFim}"></td>
+						<td th:utext="${item.liderado.nome}"></td>
+						<td th:utext="${item.introducao}"></td>
+						<td th:utext="${item.pontosPositivos}"></td>
+						<td th:utext="${item.melhorias}"></td>
+						<td th:utext="${item.feedBackReverso}"></td>
+						<td th:utext="${item.realizado} ? 'Sim' : 'Não'"></td>
+						<td class="text-center">
+							<a th:href="@{/oneOnOne/editar} +'?idOneOnOne=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> <a th:href="@{/oneOnOne/remover} +'?idOneOnOne=' +${item.id}"> <i
+									class="fa fa-remove"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
