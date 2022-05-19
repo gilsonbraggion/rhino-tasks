@@ -56,6 +56,13 @@ public class OneOnOneController {
 		return "logged/oneOnOne/listagem";
 	}
 
+	@GetMapping(value = "naoRealizados")
+	public String getNaoRealizados(Model model) {
+		List<OneOnOne> lista = repo.buscarNaoRealizados();
+		model.addAttribute("listagem", lista);
+		return "logged/oneOnOne/listagem";
+	}
+	
 	@GetMapping(value = "/novo")
 	public String novo(OneOnOne oneOnOne) {
 		return "logged/oneOnOne/cadastro";

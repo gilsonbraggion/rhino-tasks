@@ -24,4 +24,8 @@ public interface OneOnOneRepository extends JpaRepository<OneOnOne, Long> {
 	@Query("select feed from OneOnOne feed where month(feed.data) = :mes and year(feed.data) = :ano")
 	public List<OneOnOne> buscarOneonOnePorData(@Param("mes") int mes, @Param("ano") int ano);
 
+	@Query("select feed from OneOnOne feed where realizado = 0 order by data ASC")
+	public List<OneOnOne> buscarNaoRealizados();
+	
+	
 }
