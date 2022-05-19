@@ -51,3 +51,9 @@ h3 {
 .accordion-button{
     display:block;
 }
+
+.headerFixo {
+	background-color: graytext;
+	color: white;
+	position: sticky; top: 0
+}
