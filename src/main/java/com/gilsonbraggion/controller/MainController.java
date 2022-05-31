@@ -1,5 +1,6 @@
 package com.gilsonbraggion.controller;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,6 +20,12 @@ public class MainController {
 	@GetMapping(value = "/403")
 	public String error403() {
 		return "error/403";
+	}
+	
+	@Scheduled(fixedRate = 480000)
+	public void scheduleFixedDelayTask() {
+	    System.out.println(
+	      "Fixed delay task - " + System.currentTimeMillis() / 1000);
 	}
 		
 }
