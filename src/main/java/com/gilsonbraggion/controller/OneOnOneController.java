@@ -84,7 +84,7 @@ public class OneOnOneController {
 
 		repo.save(oneOnOne);
 
-		return "redirect:/oneOnOne";
+		return "redirect:/oneOnOne/naoRealizados";
 	}
 
 	@GetMapping(value = "/remover")
