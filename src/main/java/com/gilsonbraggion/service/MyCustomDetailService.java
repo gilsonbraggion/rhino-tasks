@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.gilsonbraggion.model.Usuario;
 import com.gilsonbraggion.repository.UserRepository;
@@ -23,6 +25,9 @@ public class MyCustomDetailService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		Usuario user = userRepo.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Email " + username + " not found ")) ;
+		
+		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		attributes.getRequest().getSession().setAttribute("USUARIO_LOGGED", user);
 		
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getAuthorities(user));
 	}

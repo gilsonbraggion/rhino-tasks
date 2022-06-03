@@ -74,6 +74,12 @@
 							<a class="nav-link" th:href="@{/logout}">Logout</a>
 						</li>
 					</ul>
+
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" href="#" th:text="|Usuário: ${session.USUARIO_LOGGED.userName}|"></a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</nav>
