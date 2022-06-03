@@ -26,10 +26,11 @@
 							<table class="table table-responsive table-bordered table-striped">
 								<thead class="headerTabelaInicial">
 									<tr>
-										<th class="col-sm-4">Texto</th>
+										<th class="col-sm-3">Texto</th>
 										<th class="col-sm-2">Envolvidos</th>
-										<th class="col-sm-1">Data Execução</th>
-										<th class="col-sm-1">Data Finalização</th>
+										<th class="col-sm-1">Criado</th>
+										<th class="col-sm-1">Controle</th>
+										<th class="col-sm-1">Finalização</th>
 										<th class="col-sm-4">Observações</th>
 
 									</tr>
@@ -40,6 +41,7 @@
 											<a th:href="@{/atividade/editar} +'?idAtividade=' +${ativ.id} + '&fromHome='+'true'" th:utext="${ativ.texto}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a>
 										</td>
 										<td th:utext="${ativ.envolvidos}"></td>
+										<td th:utext="${{ativ.dataCriacao}}"></td>
 										<td th:utext="${{ativ.dataExecucao}}"></td>
 										<td th:utext="${{ativ.dataFinalizacao}}"></td>
 										<td th:utext="${ativ.observacoes}"></td>

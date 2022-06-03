@@ -51,7 +51,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item : ${listagem}">
+					<tr th:each="item : ${listagem}" th:classappend="${item.estiloLinha}">
 						<td th:utext="${{item.data}}"></td>
 						<td th:utext="${item.horaInicio}"></td>
 						<td th:utext="${item.horaFim}"></td>
@@ -62,8 +62,8 @@
 						<td th:utext="${item.feedBackReverso}"></td>
 						<td th:utext="${item.realizado} ? 'Sim' : 'Não'"></td>
 						<td class="text-center">
-							<a th:href="@{/oneOnOne/editar} +'?idOneOnOne=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> <a th:href="@{/oneOnOne/remover} +'?idOneOnOne=' +${item.id}"> <i
-									class="fa fa-remove"></i></a>
+							<a th:if="${!item.realizado}" th:href="@{/oneOnOne/editar} +'?idOneOnOne=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+							<a th:if="${!item.realizado}" th:href="@{/oneOnOne/remover} +'?idOneOnOne=' +${item.id}"> <i class="fa fa-remove"></i></a>
 						</td>
 					</tr>
 				</tbody>

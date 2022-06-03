@@ -39,8 +39,8 @@
 					<td th:utext="${item.finalizado} ? 'Sim' : 'Não'"></td>
 					<td th:utext="${item.observacoes}"></td>
 					<td class="text-center">
-						<a th:href="@{/atividade/editar} +'?idAtividade=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> <a
-							th:href="@{/atividade/remover} +'?idAtividade=' +${item.id}"> <i class="fa fa-remove"></i></a>
+						<a th:href="@{/atividade/editar} +'?idAtividade=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+						<a th:href="@{/atividade/remover} +'?idAtividade=' +${item.id}"> <i class="fa fa-remove"></i></a>
 					</td>
 				</tr>
 			</tbody>

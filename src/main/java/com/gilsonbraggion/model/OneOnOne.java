@@ -50,4 +50,11 @@ public class OneOnOne {
 	@Transient
 	private Long idLiderado;
 
+	@Transient
+	private String estiloLinha;
+
+	public String getEstiloLinha() {
+		return this.isRealizado() ? "atividadeConcluida" : "";
+	}
+
 }
