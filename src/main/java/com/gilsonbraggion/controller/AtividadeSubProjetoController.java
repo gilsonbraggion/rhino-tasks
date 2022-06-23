@@ -68,5 +68,15 @@ public class AtividadeSubProjetoController {
 		repo.deleteById(idAtividadeSubProjeto);
 		return "redirect:/atividadeSubProjeto";
 	}
+	
+	@GetMapping(value = "/listaBySub")
+	private String buscarListaPirSubProjeto(Long idSubProjeto, Model model) {
+		List<AtividadeSubProjeto> lista = repo.buscarAtividadesPorSubProjeto(idSubProjeto);
+
+		model.addAttribute("listagem", lista);
+		return "logged/atividadeSubProjeto/listagem";
+		
+	}
+
 
 }

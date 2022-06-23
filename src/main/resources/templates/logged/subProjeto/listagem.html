@@ -19,8 +19,8 @@
 		<table class="table table-responsive table-bordered table-striped">
 			<thead class="headerFixo">
 				<tr>
-					<th class="col-sm-2">Nome sub projeto</th>
 					<th class="col-sm-2">Projeto</th>
+					<th class="col-sm-2">Nome sub projeto</th>
 					<th class="col-sm-1">Data inicio</th>
 					<th class="col-sm-1">Data fim</th>
 					<th class="col-sm-1">Responsável</th>
@@ -32,8 +32,8 @@
 			</thead>
 			<tbody>
 				<tr th:each="item : ${listagem}" >
-					<td th:utext="${item.nomeSubProjeto}"></td>
 					<td th:utext="${item.projeto.nomeProjeto}"></td>
+					<td th:utext="${item.nomeSubProjeto}"></td>
 					<td th:utext="${{item.dataInicio}}"></td>
 					<td th:utext="${{item.dataFim}}"></td>
 					<td th:utext="${item.responsavel}"></td>
@@ -42,7 +42,8 @@
 					<td th:utext="${item.atrasado} ? 'Sim' : 'Não'"></td>
 					<td class="text-center">
 						<a th:if="${!item.finalizado}" th:href="@{/subProjeto/editar} +'?idSubProjeto=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
-						<a th:if="${!item.finalizado}" th:href="@{/subProjeto/remover} +'?idSubProjeto=' +${item.id}"> <i class="fa fa-remove"></i></a>
+						<a th:if="${!item.finalizado}" th:href="@{/subProjeto/remover} +'?idSubProjeto=' +${item.id}"> <i class="fa fa-remove" style="padding-right: 10px;"></i></a>
+						<a th:href="@{/atividadeSubProjeto/listaBySub} +'?idSubProjeto=' +${item.id}"> <i class="fa fa-list"></i></a>
 					</td>
 				</tr>
 			</tbody>
