@@ -39,20 +39,21 @@ public class Util {
 	public static double getPercentualEsperado(Date dataInicio, Date dataFinal) {
 
 		if (dataInicio == null && dataFinal == null) {
-			return 0l;
+			return 0d;
 		}
 
 		long now = System.currentTimeMillis();
 		long s = dataInicio.getTime();
 		long e = dataFinal.getTime();
 
-		if (s >= e || now >= e) {
-			return 0l;
+		if (now >= e) {
+			return 100d;
 		}
 
-		if (now <= e) {
-			return 100l;
+		if (s >= e || now >= e) {
+			return 0d;
 		}
+
 		return (long) (100 - ((e - now) * 100 / (e - s)));
 	}
 
@@ -61,7 +62,7 @@ public class Util {
 		double total = avancoDesenv + avancoEssencial + avancoCompleto;
 		
 		if (total == 0) {
-			return 0l;
+			return 0d;
 		}
 
 		double avanco = total / 3;

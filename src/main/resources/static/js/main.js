@@ -45,7 +45,10 @@ $(document).ready(function(e) {
     var decimal = $('.js-decimal');
 	decimal.maskMoney({
 		decimal : ",",
-		thousands : "."
+		thousands : ".",
+		formatOnBlur: true,
+		allowEmpty: true,
+		allowZero: true
 	});
 
     

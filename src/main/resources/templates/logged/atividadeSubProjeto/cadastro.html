@@ -64,27 +64,27 @@
 				
 				<div class="col-sm-2  form-group">
 					<label>% Esperado</label>
-					<input type="text" th:field="*{percentualEsperado}" class="form-control" disabled="disabled"/>
+					<input type="text" th:field="*{{percentualEsperado}}" class="form-control" disabled="disabled"/>
 				</div>
 
 				<div class="col-sm-2  form-group">
 					<label>% Desenvolvimento</label>
-					<input type="text" th:field="*{percentualDesenvolvimento}" class="form-control js-decimal" />
+					<input type="text" th:field="*{{percentualDesenvolvimento}}" class="form-control js-decimal" />
 				</div>
 				
 				<div class="col-sm-2  form-group">
 					<label>% Teste essencial</label>
-					<input type="text" th:field="*{percentualTesteEssencial}" class="form-control js-decimal" />
+					<input type="text" th:field="*{{percentualTesteEssencial}}" class="form-control js-decimal" />
 				</div>
 				
 				<div class="col-sm-2  form-group">
 					<label>% Teste completo</label>
-					<input type="text" th:field="*{percentualTesteCompleto}" class="form-control js-decimal" />
+					<input type="text" th:field="*{{percentualTesteCompleto}}" class="form-control js-decimal" />
 				</div>
 
 				<div class="col-sm-2  form-group">
 					<label>% Avanço real</label>
-					<input type="text" th:field="*{percentualReal}" class="form-control js-decimal" />
+					<input type="text" th:field="*{{percentualReal}}" class="form-control js-decimal" disabled="disabled"/>
 				</div>
 			</div>
 

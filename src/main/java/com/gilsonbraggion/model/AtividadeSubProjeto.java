@@ -2,7 +2,6 @@ package com.gilsonbraggion.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,7 +49,7 @@ public class AtividadeSubProjeto {
 
 	@Transient
 	private double percentualReal;
-	
+
 	public double getPercentualEsperado() {
 		return Util.getPercentualEsperado(this.getDataInicio(), this.getDataFim());
 	}
