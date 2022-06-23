@@ -50,7 +50,7 @@ public class Util {
 			return 0l;
 		}
 
-		if (now <= s) {
+		if (now <= e) {
 			return 100l;
 		}
 		return (long) (100 - ((e - now) * 100 / (e - s)));
