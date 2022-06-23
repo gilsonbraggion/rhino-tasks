@@ -41,6 +41,13 @@ $(document).ready(function(e) {
 	});
 	
 	$('.mascaraHora').mask('00:00');
+
+    var decimal = $('.js-decimal');
+	decimal.maskMoney({
+		decimal : ",",
+		thousands : "."
+	});
+
     
 
 });

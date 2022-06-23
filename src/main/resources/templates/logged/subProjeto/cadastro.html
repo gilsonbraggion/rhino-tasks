@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Sub Projeto <a th:href="@{/subProjeto}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${subProjeto}" class="form-vertical  js-form-loading" th:action="@{/subProjeto/salvar}">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="alert alert-danger text-center" role="alert" th:if="${mensagem}">
+				<span th:utext="${mensagem}"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 form-group">
+					<label>Projeto</label>
+					<select class="form-select" name="idProjeto">
+						<option th:each="item : ${listagemProjeto}" th:label="${item.nomeProjeto}" th:value="${item.id}" th:selected="${item.id == subProjeto.projeto?.id}" />
+					</select>
+				</div>
+				
+				<div class="col-sm-3  form-group">
+					<label>Nome sub projeto</label>
+					<input type="text" th:field="*{nomeSubProjeto}" class="form-control" autofocus="autofocus" />
+				</div>
+				
+
+				<div class="col-sm-1 form-group">
+					<label>Data inicio</label>
+					<input type="text" th:field="*{{dataInicio}}" class="form-control datepicker" autocomplete="off" />
+				</div>
+				
+				<div class="col-sm-1 form-group">
+					<label>Data final</label>
+					<input type="text" th:field="*{{dataFim}}" class="form-control datepicker" autocomplete="off" />
+				</div>
+				
+				<div class="col-sm-2  form-group">
+					<label>Responsável</label>
+					<input type="text" th:field="*{responsavel}" class="form-control" autofocus="autofocus" />
+				</div>
+				
+			
+				<div class="col-sm-1 form-group">
+					<label>Finalizado</label>
+					<select class="form-select" name="finalizado">
+						<option value="false" >Não</option>
+						<option value="true"  th:selected="*{finalizado}">Sim</option>
+					</select>
+				</div>
+				
+				<div class="col-sm-1 form-group">
+					<label>Atrasado</label>
+					<select class="form-select" name="atrasado">
+						<option value="false" >Não</option>
+						<option value="true"  th:selected="*{atrasado}">Sim</option>
+					</select>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12  form-group">
+					<label>Observações</label>
+					<textarea th:field="*{observacoes}" class="form-control" rows="5" maxlength="500" ></textarea>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group text-center">
+					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

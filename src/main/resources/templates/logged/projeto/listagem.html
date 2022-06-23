@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Projeto <a th:href="@{/projeto/novo}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+
+		<table class="table table-responsive table-bordered table-striped">
+			<thead class="headerFixo">
+				<tr>
+					<th class="col-sm-2">Nome</th>
+					<th class="col-sm-1">Data início</th>
+					<th class="col-sm-1">Data fim</th>
+					<th class="col-sm-2">Responsável</th>
+					<th class="col-sm-4">Observações</th>
+					<th class="col-sm-1">Finalizado</th>
+					<th class="col-sm-1">Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${listagem}">
+					<td th:utext="${item.nomeProjeto}"></td>
+					<td th:utext="${{item.dataInicio}}"></td>
+					<td th:utext="${{item.dataFim}}"></td>
+					<td th:utext="${item.responsavel}"></td>
+					<td th:utext="${item.observacoes}"></td>
+					<td th:utext="${item.finalizado} ? 'Sim' : 'Não'"></td>
+					<td class="text-center">
+						<a th:href="@{/projeto/editar} +'?idProjeto=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+						<a th:href="@{/projeto/remover} +'?idProjeto=' +${item.id}"> <i class="fa fa-remove" style="padding-right: 10px;"></i></a>
+						<a th:href="@{/projeto/filtrar} +'?idProjeto=' +${item.id}"> <i class="fa fa-list"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

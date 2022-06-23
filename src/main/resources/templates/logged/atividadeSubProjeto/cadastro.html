@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Atividade Sub Projeto <a th:href="@{/atividadeSubProjeto}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${atividadeSubProjeto}" class="form-vertical  js-form-loading" th:action="@{/atividadeSubProjeto/salvar}">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="alert alert-danger text-center" role="alert" th:if="${mensagem}">
+				<span th:utext="${mensagem}"></span>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 form-group">
+					<label>Sub Projeto</label>
+					<select class="form-select" name="idSubProjeto">
+						<option th:each="item : ${listagemSubProjeto}" th:label="${item.nomeSubProjeto}" th:value="${item.id}" th:selected="${item.id == atividadeSubProjeto.subProjeto?.id}" />
+					</select>
+				</div>
+				
+				<div class="col-sm-3  form-group">
+					<label>Atividade</label>
+					<input type="text" th:field="*{nomeAtividade}" class="form-control" autofocus="autofocus" />
+				</div>
+				
+
+				<div class="col-sm-2 form-group">
+					<label>Data inicio</label>
+					<input type="text" th:field="*{{dataInicio}}" class="form-control datepicker" autocomplete="off" />
+				</div>
+				
+				<div class="col-sm-2 form-group">
+					<label>Data final</label>
+					<input type="text" th:field="*{{dataFim}}" class="form-control datepicker" autocomplete="off" />
+				</div>
+				
+				<div class="col-sm-2 form-group">
+					<label>Responsável</label>
+					<input type="text" th:field="*{responsavel}" class="form-control" />
+				</div>
+				
+			
+			</div>
+
+			<div class="row">
+				<div class="col-sm-2 form-group">
+					<label>Esteira</label>
+					<select class="form-select" name="esteiraGerada">
+						<option value="false" >Não</option>
+						<option value="true"  th:selected="*{esteiraGerada}">Sim</option>
+					</select>
+				</div>
+				
+				<div class="col-sm-2  form-group">
+					<label>% Esperado</label>
+					<input type="text" th:field="*{percentualEsperado}" class="form-control" disabled="disabled"/>
+				</div>
+
+				<div class="col-sm-2  form-group">
+					<label>% Desenvolvimento</label>
+					<input type="text" th:field="*{percentualDesenvolvimento}" class="form-control js-decimal" />
+				</div>
+				
+				<div class="col-sm-2  form-group">
+					<label>% Teste essencial</label>
+					<input type="text" th:field="*{percentualTesteEssencial}" class="form-control js-decimal" />
+				</div>
+				
+				<div class="col-sm-2  form-group">
+					<label>% Teste completo</label>
+					<input type="text" th:field="*{percentualTesteCompleto}" class="form-control js-decimal" />
+				</div>
+
+				<div class="col-sm-2  form-group">
+					<label>% Avanço real</label>
+					<input type="text" th:field="*{percentualReal}" class="form-control js-decimal" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group text-center">
+					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

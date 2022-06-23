@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+	<div class="starter-template text-center">
+		<h3>
+			Atividade Sub Projeto <a th:href="@{/atividadeSubProjeto/novo}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a> <a th:href="@{/atividadeSubProjeto}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<table class="table table-responsive table-bordered table-striped">
+			<thead class="headerFixo">
+				<tr>
+					<th class="col-sm-2">Atividade</th>
+					<th class="col-sm-2">Sub Projeto</th>
+					<th class="col-sm-1">Data inicio</th>
+					<th class="col-sm-1">Data fim</th>
+					<th class="col-sm-1">Responsável</th>
+					<th class="col-sm-1">% Esperado.</th>
+					<th class="col-sm-1">% Desenv.</th>
+					<th class="col-sm-1">% Essencial</th>
+					<th class="col-sm-1">% Completo</th>
+					<th class="col-sm-1">% Avanço Real</th>
+					<th class="col-sm-1">Esteira</th>
+					<th class="col-sm-1">Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${listagem}" >
+					<td th:utext="${item.nomeAtividade}"></td>
+					<td th:utext="${item.subProjeto.nomeSubProjeto}"></td>
+					<td th:utext="${{item.dataInicio}}"></td>
+					<td th:utext="${{item.dataFim}}"></td>
+					<td th:utext="${item.responsavel}"></td>
+					<td th:utext="${{item.percentualEsperado}}"></td>
+					<td th:utext="${{item.percentualDesenvolvimento}}"></td>
+					<td th:utext="${{item.percentualTesteEssencial}}"></td>
+					<td th:utext="${{item.percentualTesteCompleto}}"></td>
+					<td th:utext="${{item.percentualReal}}"></td>
+					<td th:utext="${item.esteiraGerada} ? 'Sim' : 'Não'"></td>
+					<td class="text-center">
+						<a th:href="@{/atividadeSubProjeto/editar} +'?idAtividadeSubProjeto=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+						<a th:href="@{/atividadeSubProjeto/remover} +'?idAtividadeSubProjeto=' +${item.id}"> <i class="fa fa-remove"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

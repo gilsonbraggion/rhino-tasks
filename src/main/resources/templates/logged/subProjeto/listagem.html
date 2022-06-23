@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+	<div class="starter-template text-center">
+		<h3>
+			Sub Projeto <a th:href="@{/subProjeto/novo}"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a> <a th:href="@{/subProjeto}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<table class="table table-responsive table-bordered table-striped">
+			<thead class="headerFixo">
+				<tr>
+					<th class="col-sm-2">Nome sub projeto</th>
+					<th class="col-sm-2">Projeto</th>
+					<th class="col-sm-1">Data inicio</th>
+					<th class="col-sm-1">Data fim</th>
+					<th class="col-sm-1">Responsável</th>
+					<th class="col-sm-2">Observações</th>
+					<th class="col-sm-1">Finalizado</th>
+					<th class="col-sm-1">Atrasado</th>
+					<th class="col-sm-1">Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${listagem}" >
+					<td th:utext="${item.nomeSubProjeto}"></td>
+					<td th:utext="${item.projeto.nomeProjeto}"></td>
+					<td th:utext="${{item.dataInicio}}"></td>
+					<td th:utext="${{item.dataFim}}"></td>
+					<td th:utext="${item.responsavel}"></td>
+					<td th:utext="${item.observacoes}"></td>
+					<td th:utext="${item.finalizado} ? 'Sim' : 'Não'"></td>
+					<td th:utext="${item.atrasado} ? 'Sim' : 'Não'"></td>
+					<td class="text-center">
+						<a th:if="${!item.finalizado}" th:href="@{/subProjeto/editar} +'?idSubProjeto=' +${item.id}"> <i class="fa fa-pencil" style="padding-right: 10px;"></i></a> 
+						<a th:if="${!item.finalizado}" th:href="@{/subProjeto/remover} +'?idSubProjeto=' +${item.id}"> <i class="fa fa-remove"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
