@@ -50,7 +50,7 @@ public class Util {
 			return 100d;
 		}
 
-		if (s >= e || now >= e) {
+		if (now <= s) {
 			return 0d;
 		}
 

@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="item : ${listagem}" >
+				<tr th:each="item : ${listagem}" th:classappend="${item.estiloLinha}">
 					<td th:utext="${item.nomeAtividade}"></td>
 					<td th:utext="${item.subProjeto.nomeSubProjeto}"></td>
 					<td th:utext="${{item.dataInicio}}"></td>

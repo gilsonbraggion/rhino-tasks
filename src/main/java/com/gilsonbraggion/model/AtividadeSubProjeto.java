@@ -49,6 +49,10 @@ public class AtividadeSubProjeto {
 
 	@Transient
 	private double percentualReal;
+	
+	@Transient
+	private String estiloLinha;
+
 
 	public double getPercentualEsperado() {
 		return Util.getPercentualEsperado(this.getDataInicio(), this.getDataFim());
@@ -57,5 +61,10 @@ public class AtividadeSubProjeto {
 	public double getPercentualReal() {
 		return Util.getPercentualReal(this.getPercentualDesenvolvimento(), this.getPercentualTesteEssencial(), this.getPercentualTesteCompleto());
 	}
+	
+	public String getEstiloLinha() {
+		return this.getPercentualReal() == 100D ? "atividadeConcluida" : "";
+	}
+
 
 }
