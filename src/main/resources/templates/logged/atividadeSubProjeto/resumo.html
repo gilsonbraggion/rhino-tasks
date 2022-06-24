@@ -13,7 +13,7 @@
 		<form th:action="@{/grafico/buscarResumoAtividadeSubProjeto}" th:method="POST" class="form">
 
 			<div class="row">
-				<div class="col-sm-3 col-md-4 form-group">
+				<div class="col-sm-3  form-group">
 					<label for="mes">Sub Projetos</label>
 					<select class="form-select" name="idSubProjeto">
 						<option label="Selecione..." value="" />
@@ -28,7 +28,7 @@
 		</form>
 
 		<div class="row">
-			<div class="form-group col-sm-3 col-md-4 littleTopSpace" th:each="item : ${listagemAtividades}">
+			<div class="form-group col-md-3 littleTopSpace" th:each="item : ${listagemAtividades}">
 				<div class="card" style="width: 18rem;">
 					<div class="card-header text-center" th:utext="${item.nomeAtividade}" style="font-weight: bold;">Featured</div>
 					<ul class="list-group list-group-flush">
