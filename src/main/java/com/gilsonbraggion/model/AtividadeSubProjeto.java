@@ -64,7 +64,9 @@ public class AtividadeSubProjeto {
 	
 	public String getEstiloLinha() {
 		
-		if (this.getPercentualReal() == 100D || this.getPercentualReal() > this.getPercentualEsperado()) {
+		if (this.getDataInicio() == null || this.getDataFim() == null) {
+			return "";
+		} else if (this.getPercentualReal() == 100D || this.getPercentualReal() > this.getPercentualEsperado()){
 			return "atividadeConcluida";
 		} else {
 			return "";
