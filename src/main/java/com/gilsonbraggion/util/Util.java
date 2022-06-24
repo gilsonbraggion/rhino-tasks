@@ -71,17 +71,4 @@ public class Util {
 
 	}
 	
-	public static String getEstiloAtividadeSubProjeto(double avancoReal) {
-		
-		if (avancoReal <= 25) {
-			return "preocupante";
-		} else if (avancoReal > 26 && avancoReal <= 50) {
-			return "controlavel";
-		} else if (avancoReal > 50 && avancoReal <= 75) {
-			return "";
-		} else {
-			return "";
-		}
-	}
-
 }

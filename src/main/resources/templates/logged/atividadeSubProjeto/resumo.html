@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>Resumo Atividades</h3>
+	</div>
+
+	<div class="container-fluid">
+		<form th:action="@{/grafico/buscarResumoAtividadeSubProjeto}" th:method="POST" class="form">
+
+			<div class="row">
+				<div class="col-sm-3  form-group">
+					<label for="mes">Sub Projetos</label>
+					<select class="form-select" name="idSubProjeto">
+						<option label="Selecione..." value="" />
+						<option th:each="item : ${listaSubProjeto}" th:utext="${item.nomeSubProjeto}" th:value="${item.id}" th:selected="${item.id} == ${subSelecionado}" />
+					</select>
+				</div>
+				<div class="form-group col-sm-3" style="padding-top: 22px;">
+					<button class="btn btn-primary" type="submit">Pesquisar</button>
+				</div>
+			</div>
+
+		</form>
+
+		<div class="row">
+			<div class="form-group col-md-3 littleTopSpace" th:each="item : ${listagemAtividades}">
+				<div class="card" style="width: 18rem;">
+					<div class="card-header text-center" th:utext="${item.nomeAtividade}" style="font-weight: bold;">Featured</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item" th:utext="|Esteira Gerada ${item.esteiraGerada ? 'Sim' : 'Não'}|">An item</li>
+						<li class="list-group-item" th:utext="|Desenvolvimento: ${{item.percentualDesenvolvimento}} %|">An item</li>
+						<li class="list-group-item" th:utext="|Teste Essencial: ${{item.percentualTesteEssencial}} %|">An item</li>
+						<li class="list-group-item" th:utext="|Teste Completo: ${{item.percentualTesteCompleto}} %|">An item</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
