@@ -28,8 +28,8 @@
 		</form>
 
 		<div class="row">
-			<div class="form-group col-md-3 littleTopSpace" th:each="item : ${listagemAtividades}">
-				<div class="card" style="width: 18rem;">
+			<div class="form-group col-sm-2 littleTopSpace" th:each="item : ${listagemAtividades}">
+				<div class="card">
 					<div class="card-header text-center" th:utext="${item.nomeAtividade}" style="font-weight: bold;">Featured</div>
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item" th:utext="|Esteira Gerada ${item.esteiraGerada ? 'Sim' : 'Não'}|">An item</li>
