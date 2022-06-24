@@ -53,14 +53,17 @@ public class AtividadeSubProjetoController {
 	}
 
 	@PostMapping(value = "/salvar")
-	public String salvar(AtividadeSubProjeto atividadeSubProjeto) {
+	public String salvar(AtividadeSubProjeto atividadeSubProjeto, Model model) {
 
 		SubProjeto subProjeto = repoSub.findById(atividadeSubProjeto.getIdSubProjeto()).orElse(null);
 		atividadeSubProjeto.setSubProjeto(subProjeto);
 
 		repo.save(atividadeSubProjeto);
 
-		return "redirect:/atividadeSubProjeto";
+		List<AtividadeSubProjeto> lista = repo.buscarAtividadesPorSubProjeto(subProjeto.getId());
+
+		model.addAttribute("listagem", lista);
+		return "logged/atividadeSubProjeto/listagem";
 	}
 
 	@GetMapping(value = "/remover")
