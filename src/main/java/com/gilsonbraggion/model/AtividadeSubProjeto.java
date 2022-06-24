@@ -68,6 +68,8 @@ public class AtividadeSubProjeto {
 			return "";
 		} else if (this.getPercentualReal() == 100D || this.getPercentualReal() > this.getPercentualEsperado()){
 			return "atividadeConcluida";
+		} else if (this.getPercentualReal() < this.getPercentualEsperado()){
+			return "atividadeVencida";
 		} else {
 			return "";
 		}
