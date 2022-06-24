@@ -38,7 +38,7 @@ public class Util {
 
 	public static double getPercentualEsperado(Date dataInicio, Date dataFinal) {
 
-		if (dataInicio == null && dataFinal == null) {
+		if (dataInicio == null || dataFinal == null) {
 			return 0d;
 		}
 
