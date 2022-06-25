@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-h1{
-	color:#0000FF;
+h1 {
+	color: #0000FF;
 }
 
 h2 {
-	color:#FF0000;
+	color: #FF0000;
 }
 
 h3 {
-	color:#696969;
+	color: #696969;
 }
 
 .topSpace {
@@ -41,19 +41,20 @@ h3 {
 }
 
 .atividadeFutura {
-	background-color: #E0FFFF !important;	
+	background-color: #E0FFFF !important;
 }
 
 .diagonal-gradient {
-  background: linear-gradient(to bottom right, green, white);
+	background: linear-gradient(to bottom right, green, white);
 }
 
-.accordion-button{
-    display:block;
+.accordion-button {
+	display: block;
 }
 
 .headerFixo {
 	background-color: graytext;
 	color: white;
-	position: sticky; top: 0
+	position: sticky;
+	top: 0
 }

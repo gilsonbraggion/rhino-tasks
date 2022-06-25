@@ -23,6 +23,10 @@
 				<div class="form-group col-sm-3" style="padding-top: 22px;">
 					<button class="btn btn-primary" type="submit">Pesquisar</button>
 				</div>
+
+				<div class="form-group col-sm-3" style="padding-top: 22px;">
+					<button th:if="*{exibirDetalhe}" class="btn btn-primary loader" type="button" id="buscarGraficoResumoAtividades">Detalhes</button>
+				</div>
 			</div>
 
 		</form>
@@ -41,7 +45,13 @@
 			</div>
 		</div>
 
+		<div class="text-center littleTopSpace" style="height: 30vh; width: 30vw">
+			<canvas id="myChart"></canvas>
+		</div>
+
 	</div>
+
+
 
 	<div th:replace="fragments/footer :: footer"></div>
 </body>

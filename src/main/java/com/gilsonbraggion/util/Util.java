@@ -1,5 +1,6 @@
 package com.gilsonbraggion.util;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -70,5 +71,17 @@ public class Util {
 		return avanco;
 
 	}
+	
+	public static String formatarValor(Double valor) {
+
+		DecimalFormat decFormat = new DecimalFormat("#,###,##0.00");
+		if (valor == null) {
+			return decFormat.format(0D);
+		}
+
+		return decFormat.format(valor);
+
+	}
+
 	
 }

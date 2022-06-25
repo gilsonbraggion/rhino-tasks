@@ -24,7 +24,7 @@ public class GraficoController {
 
 	@Autowired
 	private AtividadeSubProjetoRepository ativRepo;
-	
+
 	@ModelAttribute
 	public void getSubProjetos(Model model) {
 		List<SubProjeto> listaSubProjetos = subRepo.findAll();
@@ -40,10 +40,11 @@ public class GraficoController {
 	public String buscarResumoAtividadesSubProjeto(Long idSubProjeto, Model model) {
 
 		List<AtividadeSubProjeto> listagemAtividades = ativRepo.buscarAtividadesPorSubProjeto(idSubProjeto);
-		
+
 		model.addAttribute("listagemAtividades", listagemAtividades);
 		model.addAttribute("subSelecionado", idSubProjeto);
-		
+		model.addAttribute("exibirDetalhe", true);
+
 		return "logged/atividadeSubProjeto/resumo";
 	}
 
