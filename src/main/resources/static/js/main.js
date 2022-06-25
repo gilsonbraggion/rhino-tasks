@@ -55,6 +55,12 @@ $(document).ready(function(e) {
 	$("#buscarGraficoResumoAtividades").click(
 		function() {
 
+			// JS - Destroy exiting Chart Instance to reuse <canvas> element
+			let chartStatus = Chart.getChart("myChart"); // <canvas> id
+			if (chartStatus != undefined) {
+				chartStatus.destroy();
+			}
+
 			var contexto = window.location.origin;
 
 			var idSubProjeto = $('select[name=idSubProjeto]').val();
@@ -81,12 +87,12 @@ $(document).ready(function(e) {
 						maintainAspectRatio: false,
 
 
-						
+
 						data: {
 							labels: Object.keys(result),
 							datasets: [
 								{
-									label: 'Resumo das atividades',
+									label: 'Resumo das atividades em %',
 									data: Object.values(result),
 									backgroundColor: [
 										'rgba(255, 99, 132, 0.2)',
@@ -109,6 +115,8 @@ $(document).ready(function(e) {
 							],
 						},
 					});
+
+					$("#botaoModal").click();
 
 				},
 				error: function() {

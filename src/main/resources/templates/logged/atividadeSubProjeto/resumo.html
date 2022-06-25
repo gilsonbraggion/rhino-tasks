@@ -45,9 +45,29 @@
 			</div>
 		</div>
 
-		<div class="text-center littleTopSpace" style="height: 30vh; width: 30vw">
-			<canvas id="myChart"></canvas>
+
+		<button style="visibility: hidden" type="button" id="botaoModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Launch demo modal</button>
+		
+		<div class="modal" tabindex="-1" id="exampleModal">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h5 class="modal-title">Resumo de atividades %</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="text-center littleTopSpace" style="height: 30vh; width: 30vw">
+							<canvas id="myChart"></canvas>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+			</div>
 		</div>
+
 
 	</div>
 
