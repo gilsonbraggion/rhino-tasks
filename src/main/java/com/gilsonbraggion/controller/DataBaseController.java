@@ -27,16 +27,16 @@ public class DataBaseController {
 	@GetMapping()
 	public String chargeUsersDatabase() {
 
-//		Usuario userAdmin = new Usuario();
-//		userAdmin.setEmail("rafael.senne@gmail.com");
-//		userAdmin.setUserName("Rafael Senne");
-//		userAdmin.setPassword(new BCryptPasswordEncoder().encode("1"));
-//
-//		List<Role> rolesAdmin = new ArrayList<Role>();
-//		rolesAdmin.add(roleRepo.findAll().get(0));
-//		userAdmin.setRoles(rolesAdmin);
-//
-//		userRepo.save(userAdmin);
+		Usuario userAdmin = new Usuario();
+		userAdmin.setEmail("rs.senne@gmail.com");
+		userAdmin.setUserName("Rafael Senne");
+		userAdmin.setPassword(new BCryptPasswordEncoder().encode("1"));
+
+		List<Role> rolesAdmin = new ArrayList<Role>();
+		rolesAdmin.add(roleRepo.findAll().get(0));
+		userAdmin.setRoles(rolesAdmin);
+
+		userRepo.save(userAdmin);
 
 		return "executou";
 	}
