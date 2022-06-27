@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gilsonbraggion.model.Role;
 import com.gilsonbraggion.model.Usuario;
 import com.gilsonbraggion.repository.RoleRepository;
-import com.gilsonbraggion.repository.UserRepository;
+import com.gilsonbraggion.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping(value = "/carregarUsuarios")
 public class DataBaseController {
 
 	@Autowired
-	private UserRepository userRepo;
+	private UsuarioRepository userRepo;
 
 	@Autowired
 	private RoleRepository roleRepo;

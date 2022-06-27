@@ -13,13 +13,13 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.gilsonbraggion.model.Usuario;
-import com.gilsonbraggion.repository.UserRepository;
+import com.gilsonbraggion.repository.UsuarioRepository;
 
 @Service
 public class MyCustomDetailService implements UserDetailsService {
 	
 	@Autowired
-	private UserRepository userRepo;
+	private UsuarioRepository userRepo;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

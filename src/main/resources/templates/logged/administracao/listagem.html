@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="starter-template text-center">
+		<h3>
+			Administração <a th:href="@{/criarRegra}"><i class="fa fa-list" aria-hidden="true"></i></a>
+		</h3>
+	</div>
+
+	<div class="container-fluid">
+
+		<form th:action="@{/administracao/buscarProjetosPorUsuario}" th:method="POST" class="form">
+			<div class="row">
+				<div class="col-sm-3  form-group">
+					<label for="mes">Usuários</label>
+					<select class="form-select" name="idUsuario">
+						<option label="Selecione..." value="" />
+						<option th:each="item : ${listagemUsuario}" th:utext="${item.userName}" th:value="${item.id}" th:selected="${item.id} == ${usuarioSelecionado}" />
+					</select>
+				</div>
+
+				<div th:if="${listagemProjetos}" class="col-sm-3  form-group">
+					<label for="mes">Projetos</label>
+					<select class="form-select" name="idProjeto">
+						<option label="Selecione..." value="" />
+						<option th:each="item : ${listagemProjetos}" th:utext="${item.nomeProjeto}" th:value="${item.id}" th:selected="${item.id} == ${projetoSelecionado}" />
+					</select>
+				</div>
+
+				<div th:if="${listagemSubProjetos}" class="col-sm-3  form-group">
+					<label for="mes">Sub Projetos</label>
+					<select class="form-select" name="idSubProjeto">
+						<option label="Selecione..." value="" />
+						<option th:each="item : ${listagemSubProjetos}" th:utext="${item.nomeSubProjeto}" th:value="${item.id}" th:selected="${item.id} == ${subProjetoSelecionado}" />
+					</select>
+				</div>
+
+				<div class="form-group col-sm-3" style="padding-top: 22px;">
+					<button class="btn btn-primary" type="submit">Pesquisar</button>
+				</div>
+
+				<div class="form-group col-sm-3" style="padding-top: 22px;">
+					<button th:if="*{exibirDetalhe}" class="btn btn-primary loader" type="button" id="buscarGraficoResumoAtividades">Detalhes</button>
+				</div>
+
+			</div>
+
+		</form>
+
+		<form th:if="${listagemCompartilhados}" th:action="@{/administracao/associar}" th:method="POST" class="form">
+			<input type="hidden" name="idUsuario" th:value="${usuarioSelecionado}">
+			<input type="hidden" name="projetoSelecionado" th:value="${projetoSelecionado}">
+			<input type="hidden" name="subProjetoSelecionado" th:value="${subProjetoSelecionado}">
+
+			<table class="table table-responsive table-bordered table-striped">
+				<thead class="headerFixo">
+					<tr>
+						<th class="col-sm-1">Nome proprietário</th>
+						<th class="col-sm-1">Recurso compartilhado</th>
+						<th class="col-sm-1">Sub projeto</th>
+						<th class="col-sm-1">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${listagemCompartilhados}">
+						<td th:utext="${item.nomeProprietario}"></td>
+						<td th:utext="${item.nomeConvidado}"></td>
+						<td th:utext="${item.nomeSubProjeto}"></td>
+						<td class="text-center">
+							<a th:href="@{/administracao/removerCompartilhamento} +'?idConvidado=' +${item.idConvidado}+'&idSubProjeto=' +${item.idSubProjeto}"> <i class="fa fa-minus" style="padding-right: 10px;"></i></a>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="row">
+				<div class="form-group col-sm-3" style="padding-top: 22px;">
+					<button class="btn btn-primary" type="submit">Associar</button>
+				</div>
+			</div>
+
+			<th:block th:if="${exibirSelecionados}"> Aeeeeeeeeee </th:block>
+
+		</form>
+
+
+	</div>
+	<!-- /.container -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

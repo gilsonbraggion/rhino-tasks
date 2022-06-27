@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.gilsonbraggion.model.Projeto;
 import com.gilsonbraggion.model.SubProjeto;
 
 @Repository
 public interface SubProjetoRepository extends JpaRepository<SubProjeto, Long> {
-	
+
 	public List<SubProjeto> findByIdUsuario(Long idUsuario);
-	
+
+	public List<SubProjeto> findByProjetoAndIdUsuario(Projeto projeto, Long idUsuario);
+
 }
