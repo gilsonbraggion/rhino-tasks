@@ -50,7 +50,7 @@ public class AdministracaoController {
 
 	@GetMapping
 	public String getAdministracao() {
-		return "/logged/administracao/listagem";
+		return "logged/administracao/listagem";
 	}
 
 	@PostMapping(value = "/buscarProjetosPorUsuario")
@@ -95,7 +95,7 @@ public class AdministracaoController {
 			model.addAttribute("listagemCompartilhados", listagemRetorno);
 		}
 
-		return "/logged/administracao/listagem";
+		return "logged/administracao/listagem";
 
 	}
 
@@ -104,7 +104,7 @@ public class AdministracaoController {
 
 		model.addAttribute("exibirSelecionados", true);
 
-		return "/logged/administracao/listagem";
+		return "logged/administracao/listagem";
 	}
 
 	@PostMapping(value = "/compartilhar")
@@ -112,7 +112,7 @@ public class AdministracaoController {
 		
 		model.addAttribute("exibirSelecionados", true);
 		
-		return "/logged/administracao/listagem";
+		return "logged/administracao/listagem";
 	}
 
 	@PostMapping(value = "/removerCompartilhamento")
