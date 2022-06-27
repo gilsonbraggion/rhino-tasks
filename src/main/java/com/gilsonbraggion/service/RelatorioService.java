@@ -18,9 +18,9 @@ public class RelatorioService {
 	@Autowired
 	private AtividadeSubProjetoRepository atividadeSub;
 
-	public List<ResumoAtividadeSubProjetoBean> buscarResumoAtividadeSubProjeto(Long idSubProjeto) {
+	public List<ResumoAtividadeSubProjetoBean> buscarResumoAtividadeSubProjeto(Long idSubProjeto, Long idUsuario) {
 
-		List<AtividadeSubProjeto> retorno = atividadeSub.buscarAtividadesPorSubProjeto(idSubProjeto);
+		List<AtividadeSubProjeto> retorno = atividadeSub.buscarAtividadesPorSubProjeto(idSubProjeto, idUsuario);
 
 		double totalDesenvolvimento = 0d;
 		double totalInicial = 0d;
@@ -37,8 +37,8 @@ public class RelatorioService {
 		mapValores.put("desenvolvimento", totalDesenvolvimento);
 		mapValores.put("inicial", totalInicial);
 		mapValores.put("completo", totalCompleto);
-		
-		listaRetorno.add(new ResumoAtividadeSubProjetoBean("Desenvolvimento",  mapValores.get("desenvolvimento") / retorno.size()));
+
+		listaRetorno.add(new ResumoAtividadeSubProjetoBean("Desenvolvimento", mapValores.get("desenvolvimento") / retorno.size()));
 		listaRetorno.add(new ResumoAtividadeSubProjetoBean("Inicial", mapValores.get("inicial") / retorno.size()));
 		listaRetorno.add(new ResumoAtividadeSubProjetoBean("Completo", mapValores.get("completo") / retorno.size()));
 

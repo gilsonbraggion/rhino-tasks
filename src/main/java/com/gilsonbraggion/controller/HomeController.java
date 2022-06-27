@@ -25,7 +25,7 @@ public class HomeController {
 
 	@GetMapping(value = { "/home" })
 	public String home(Model model) {
-
+		Long idUsuario = Util.obterIdUsuarioLogado();
 		List<TipoAtividade> listagemTipo = tipoRepo.findAll();
 
 		List<TipoAtividadeBean> listaInternaBean = new ArrayList<>();
@@ -38,7 +38,7 @@ public class HomeController {
 			bean.setIdTipoAtividade(tipoAtividade.getId());
 			bean.setNomeTipoAtividade(tipoAtividade.getNome());
 
-			bean.setListaAtividades(ativRepo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId()));
+			bean.setListaAtividades(ativRepo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId(), idUsuario));
 
 			if (!bean.getListaAtividades().isEmpty()) {
 				bean.setDataMaisProxima(Util.getDateString(bean.getListaAtividades().get(0).getDataExecucao()));

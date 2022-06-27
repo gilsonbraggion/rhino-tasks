@@ -9,7 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
+
+import com.gilsonbraggion.util.Util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,5 +49,19 @@ public class SubProjeto {
 	
 	@Transient
 	private Long idProjeto;
+	
+	@Column(nullable = false)
+	private Long idUsuario;
+	
+	@PrePersist
+	public void prePersist() {
+		idUsuario = Util.obterIdUsuarioLogado();
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		idUsuario = Util.obterIdUsuarioLogado();
+	}
+
 
 }

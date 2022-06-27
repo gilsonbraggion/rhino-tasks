@@ -27,23 +27,16 @@ public class DataBaseController {
 	@GetMapping()
 	public String chargeUsersDatabase() {
 
-		userRepo.deleteAll();
-
-		Role roleAdmin = new Role();
-		roleAdmin.setName("ADMIN");
-
-		Role roleSaved = roleRepo.save(roleAdmin);
-
-		Usuario userAdmin = new Usuario();
-		userAdmin.setEmail("gilson.braggion@gmail.com");
-		userAdmin.setUserName("Gilson Braggion");
-		userAdmin.setPassword(new BCryptPasswordEncoder().encode("1"));
-
-		List<Role> rolesAdmin = new ArrayList<Role>();
-		rolesAdmin.add(roleSaved);
-		userAdmin.setRoles(rolesAdmin);
-
-		userRepo.save(userAdmin);
+//		Usuario userAdmin = new Usuario();
+//		userAdmin.setEmail("rafael.senne@gmail.com");
+//		userAdmin.setUserName("Rafael Senne");
+//		userAdmin.setPassword(new BCryptPasswordEncoder().encode("1"));
+//
+//		List<Role> rolesAdmin = new ArrayList<Role>();
+//		rolesAdmin.add(roleRepo.findAll().get(0));
+//		userAdmin.setRoles(rolesAdmin);
+//
+//		userRepo.save(userAdmin);
 
 		return "executou";
 	}

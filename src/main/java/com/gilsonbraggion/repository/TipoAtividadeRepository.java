@@ -10,6 +10,5 @@ import com.gilsonbraggion.model.TipoAtividade;
 @Repository
 public interface TipoAtividadeRepository extends JpaRepository<TipoAtividade, Long> {
 
-	@Override
-	public List<TipoAtividade> findAll();
+	public List<TipoAtividade> findByIdUsuario(Long idUsuario);
 }

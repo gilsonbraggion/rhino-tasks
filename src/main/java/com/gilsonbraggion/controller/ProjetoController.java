@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gilsonbraggion.model.Projeto;
 import com.gilsonbraggion.repository.ProjetoRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/projeto")
@@ -22,7 +23,8 @@ public class ProjetoController {
 
 	@GetMapping
 	public String get(Model model) {
-		List<Projeto> lista = repo.findAll();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<Projeto> lista = repo.findByIdUsuario(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/projeto/listagem";
 	}

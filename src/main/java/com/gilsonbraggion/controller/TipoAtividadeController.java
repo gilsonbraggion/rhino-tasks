@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gilsonbraggion.model.TipoAtividade;
 import com.gilsonbraggion.repository.TipoAtividadeRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/tipoAtividade")
@@ -20,7 +21,8 @@ public class TipoAtividadeController {
 
 	@GetMapping
 	public String getTipoAtividadesAtividades(Model model) {
-		model.addAttribute("listagem", repo.findAll());
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		model.addAttribute("listagem", repo.findByIdUsuario(idUsuario));
 		return "logged/tipoAtividade/listagem";
 	}
 
@@ -53,8 +55,8 @@ public class TipoAtividadeController {
 
 		TipoAtividade tipoAtividade = repo.findById(idTipoAtividade).orElse(null);
 		atributo.addFlashAttribute("tipoAtividade", tipoAtividade);
-		
+
 		return "redirect:/atividade/filtrar";
 	}
-	
+
 }

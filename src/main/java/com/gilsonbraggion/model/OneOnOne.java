@@ -9,9 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
+import com.gilsonbraggion.util.Util;
 
 import lombok.Data;
 
@@ -47,6 +51,9 @@ public class OneOnOne {
 
 	private boolean realizado;
 
+	@Column(nullable = false)
+	private Long idUsuario;
+
 	@Transient
 	private Long idLiderado;
 
@@ -55,6 +62,16 @@ public class OneOnOne {
 
 	public String getEstiloLinha() {
 		return this.isRealizado() ? "atividadeConcluida" : "";
+	}
+
+	@PrePersist
+	public void prePersist() {
+		idUsuario = Util.obterIdUsuarioLogado();
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		idUsuario = Util.obterIdUsuarioLogado();
 	}
 
 }

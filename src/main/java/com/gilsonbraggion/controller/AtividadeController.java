@@ -16,6 +16,7 @@ import com.gilsonbraggion.model.Atividade;
 import com.gilsonbraggion.model.TipoAtividade;
 import com.gilsonbraggion.repository.AtividadeRepository;
 import com.gilsonbraggion.repository.TipoAtividadeRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/atividade")
@@ -29,13 +30,17 @@ public class AtividadeController {
 
 	@ModelAttribute
 	public void getTiposAtividade(Model model) {
-		List<TipoAtividade> listagem = repoTipo.findAll();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		
+		List<TipoAtividade> listagem = repoTipo.findByIdUsuario(idUsuario);
 		model.addAttribute("listagemTipo", listagem);
 	}
 
 	@GetMapping
 	public String get(Model model) {
-		List<Atividade> lista = repo.findByOrderByDataExecucaoAsc();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+
+		List<Atividade> lista = repo.findByIdUsuarioOrderByDataExecucaoAsc(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/atividade/listagem";
 	}
@@ -49,22 +54,24 @@ public class AtividadeController {
 	public String atividadeFromHome(Long idTipoAtividade, Model model) {
 		Atividade atividade = new Atividade();
 		atividade.setFromHome(true);
-		
+
 		Optional<TipoAtividade> tipoAtividade = repoTipo.findById(idTipoAtividade);
-		
+
 		if (tipoAtividade.isPresent()) {
 			atividade.setTipoAtividade(tipoAtividade.get());
 		}
-		
+
 		model.addAttribute("atividade", atividade);
-		
+
 		return "logged/atividade/cadastro";
 	}
-	
+
 	@GetMapping(value = "/filtrar")
 	public String filtro(TipoAtividade tipoAtividade, Model model) {
+		
+		Long idUsuario = Util.obterIdUsuarioLogado();
 
-		List<Atividade> listagem = repo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId());
+		List<Atividade> listagem = repo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId(), idUsuario);
 		model.addAttribute("listagem", listagem);
 		model.addAttribute("tipoAtividade", tipoAtividade);
 
@@ -75,7 +82,7 @@ public class AtividadeController {
 	private String editar(Long idAtividade, boolean fromHome, RedirectAttributes atributo) {
 		Atividade atividade = repo.findById(idAtividade).orElse(null);
 		atividade.setFromHome(fromHome);
-		
+
 		atributo.addFlashAttribute("atividade", atividade);
 		return "redirect:/atividade/novo";
 	}
@@ -87,11 +94,11 @@ public class AtividadeController {
 		atividade.setTipoAtividade(tipoAtividade);
 
 		repo.save(atividade);
-		
+
 		if (atividade.isFromHome()) {
 			return "redirect:/home";
 		} else {
-			return "redirect:/atividade";	
+			return "redirect:/atividade";
 		}
 	}
 

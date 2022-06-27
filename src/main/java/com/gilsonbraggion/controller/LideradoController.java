@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gilsonbraggion.model.Liderado;
 import com.gilsonbraggion.repository.LideradoRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/liderado")
@@ -22,7 +23,10 @@ public class LideradoController {
 
 	@GetMapping
 	public String get(Model model) {
-		List<Liderado> lista = repo.findAll();
+		
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		
+		List<Liderado> lista = repo.findByIdUsuario(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/liderado/listagem";
 	}

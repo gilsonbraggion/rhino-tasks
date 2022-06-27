@@ -15,6 +15,7 @@ import com.gilsonbraggion.model.AtividadeSubProjeto;
 import com.gilsonbraggion.model.SubProjeto;
 import com.gilsonbraggion.repository.AtividadeSubProjetoRepository;
 import com.gilsonbraggion.repository.SubProjetoRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/atividadeSubProjeto")
@@ -28,13 +29,18 @@ public class AtividadeSubProjetoController {
 
 	@ModelAttribute
 	public void getLiderados(Model model) {
-		List<SubProjeto> listagem = repoSub.findAll();
+		
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		
+		List<SubProjeto> listagem = repoSub.findByIdUsuario(idUsuario);
 		model.addAttribute("listagemSubProjeto", listagem);
 	}
 
 	@GetMapping
 	public String get(Model model) {
-		List<AtividadeSubProjeto> lista = repo.findAll();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		
+		List<AtividadeSubProjeto> lista = repo.findByIdUsuario(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/atividadeSubProjeto/listagem";
 	}
@@ -55,12 +61,14 @@ public class AtividadeSubProjetoController {
 	@PostMapping(value = "/salvar")
 	public String salvar(AtividadeSubProjeto atividadeSubProjeto, Model model) {
 
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		
 		SubProjeto subProjeto = repoSub.findById(atividadeSubProjeto.getIdSubProjeto()).orElse(null);
 		atividadeSubProjeto.setSubProjeto(subProjeto);
 
 		repo.save(atividadeSubProjeto);
 
-		List<AtividadeSubProjeto> lista = repo.buscarAtividadesPorSubProjeto(subProjeto.getId());
+		List<AtividadeSubProjeto> lista = repo.buscarAtividadesPorSubProjeto(subProjeto.getId(), idUsuario);
 
 		model.addAttribute("listagem", lista);
 		return "logged/atividadeSubProjeto/listagem";
@@ -74,7 +82,9 @@ public class AtividadeSubProjetoController {
 	
 	@GetMapping(value = "/listaBySub")
 	private String buscarListaPirSubProjeto(Long idSubProjeto, Model model) {
-		List<AtividadeSubProjeto> lista = repo.buscarAtividadesPorSubProjeto(idSubProjeto);
+		
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<AtividadeSubProjeto> lista = repo.buscarAtividadesPorSubProjeto(idSubProjeto, idUsuario);
 
 		model.addAttribute("listagem", lista);
 		return "logged/atividadeSubProjeto/listagem";

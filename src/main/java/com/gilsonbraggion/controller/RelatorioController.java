@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gilsonbraggion.bean.ResumoAtividadeSubProjetoBean;
 import com.gilsonbraggion.service.RelatorioService;
+import com.gilsonbraggion.util.Util;
 
 @RestController
 @RequestMapping(value = "/relatorio")
@@ -24,7 +25,9 @@ public class RelatorioController {
 	@RequestMapping(value = "/buscarGraficoResumoAtividades", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<?> buscarResumoAtividadeSubProjeto(@RequestParam("idSubProjeto") Long idSubProjeto, Model model) {
 
-		List<ResumoAtividadeSubProjetoBean> listaResumo = relatService.buscarResumoAtividadeSubProjeto(idSubProjeto);
+		Long idUsuario = Util.obterIdUsuarioLogado();
+
+		List<ResumoAtividadeSubProjetoBean> listaResumo = relatService.buscarResumoAtividadeSubProjeto(idSubProjeto, idUsuario);
 
 		return ResponseEntity.ok(listaResumo);
 	}

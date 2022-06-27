@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -50,6 +51,9 @@ public class Atividade {
 	@ManyToOne(optional = false)
 	private TipoAtividade tipoAtividade;
 
+	@Column(nullable = false)
+	private Long idUsuario;
+
 	@Transient
 	private Long idTipoAtividade;
 
@@ -66,6 +70,12 @@ public class Atividade {
 	@PrePersist
 	public void prePersist() {
 		dataCriacao = new Date();
+		idUsuario = Util.obterIdUsuarioLogado();
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		idUsuario = Util.obterIdUsuarioLogado();
 	}
 
 }

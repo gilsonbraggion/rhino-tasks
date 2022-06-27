@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gilsonbraggion.model.Reuniao;
 import com.gilsonbraggion.repository.ReuniaoRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/reuniao")
@@ -22,7 +23,9 @@ public class ReuniaoController {
 
 	@GetMapping
 	public String get(Model model) {
-		List<Reuniao> lista = repo.findAll();
+
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<Reuniao> lista = repo.findByIdUsuario(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/reuniao/listagem";
 	}

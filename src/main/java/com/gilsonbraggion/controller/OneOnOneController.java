@@ -20,6 +20,7 @@ import com.gilsonbraggion.model.Liderado;
 import com.gilsonbraggion.model.OneOnOne;
 import com.gilsonbraggion.repository.LideradoRepository;
 import com.gilsonbraggion.repository.OneOnOneRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/oneOnOne")
@@ -33,7 +34,9 @@ public class OneOnOneController {
 
 	@ModelAttribute
 	public void getDatasFiltro(Model model) {
-		List<FiltroDatas> datas = repo.buscarDatas();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+
+		List<FiltroDatas> datas = repo.buscarDatas(idUsuario);
 		Locale BRAZIL = new Locale("pt", "BR");
 
 		for (FiltroDatas item : datas) {
@@ -45,24 +48,27 @@ public class OneOnOneController {
 
 	@ModelAttribute
 	public void getLiderados(Model model) {
-		List<Liderado> listagem = repoLiderado.findAll();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<Liderado> listagem = repoLiderado.findByIdUsuario(idUsuario);
 		model.addAttribute("listagemLiderado", listagem);
 	}
-	
+
 	@GetMapping
 	public String get(Model model) {
-		List<OneOnOne> lista = repo.findByOrderByDataAsc();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<OneOnOne> lista = repo.findByIdUsuarioOrderByDataAsc(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/oneOnOne/listagem";
 	}
 
 	@GetMapping(value = "naoRealizados")
 	public String getNaoRealizados(Model model) {
-		List<OneOnOne> lista = repo.buscarNaoRealizados();
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<OneOnOne> lista = repo.buscarNaoRealizados(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/oneOnOne/listagem";
 	}
-	
+
 	@GetMapping(value = "/novo")
 	public String novo(OneOnOne oneOnOne) {
 		return "logged/oneOnOne/cadastro";
@@ -81,7 +87,7 @@ public class OneOnOneController {
 
 		Liderado liderado = repoLiderado.findById(oneOnOne.getIdLiderado()).orElse(null);
 		oneOnOne.setLiderado(liderado);
-
+		
 		repo.save(oneOnOne);
 
 		return "redirect:/oneOnOne/naoRealizados";
@@ -101,11 +107,13 @@ public class OneOnOneController {
 	@PostMapping(value = "/pesquisarDatas")
 	private String pesquisarDatas(Model model, String dataSelecionada) {
 
+		Long idUsuario = Util.obterIdUsuarioLogado();
+
 		String[] selecao = dataSelecionada.split(" ");
-		List<OneOnOne> listagem = repo.buscarOneonOnePorData(Integer.valueOf(selecao[0]),Integer.valueOf(selecao[1]));
+		List<OneOnOne> listagem = repo.buscarOneonOnePorData(Integer.valueOf(selecao[0]), Integer.valueOf(selecao[1]), idUsuario);
 
 		model.addAttribute("listagem", listagem);
-		
+
 		FiltroDatas filtro = new FiltroDatas(Integer.valueOf(selecao[0]), Integer.valueOf(selecao[1]));
 		model.addAttribute("dataSelecionada", filtro);
 
@@ -121,9 +129,11 @@ public class OneOnOneController {
 	@GetMapping(value = "/listagemOneOnOne")
 	private String listagemPorLiderado(Long idLiderado, Model model) {
 
+		Long idUsuario = Util.obterIdUsuarioLogado();
+
 		Liderado liderado = repoLiderado.findById(idLiderado).orElse(null);
 
-		List<OneOnOne> listagem = repo.findByLideradoOrderByDataAsc(liderado);
+		List<OneOnOne> listagem = repo.findByLideradoAndIdUsuarioOrderByDataAsc(liderado, idUsuario);
 
 		model.addAttribute("listagem", listagem);
 

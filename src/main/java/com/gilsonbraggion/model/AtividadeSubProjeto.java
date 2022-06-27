@@ -2,12 +2,15 @@ package com.gilsonbraggion.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
 
 import com.gilsonbraggion.util.Util;
@@ -41,6 +44,9 @@ public class AtividadeSubProjeto {
 
 	private boolean esteiraGerada;
 
+	@Column(nullable = false)
+	private Long idUsuario;
+
 	@Transient
 	private Long idSubProjeto;
 
@@ -49,10 +55,9 @@ public class AtividadeSubProjeto {
 
 	@Transient
 	private double percentualReal;
-	
+
 	@Transient
 	private String estiloLinha;
-
 
 	public double getPercentualEsperado() {
 		return Util.getPercentualEsperado(this.getDataInicio(), this.getDataFim());
@@ -61,20 +66,29 @@ public class AtividadeSubProjeto {
 	public double getPercentualReal() {
 		return Util.getPercentualReal(this.getPercentualDesenvolvimento(), this.getPercentualTesteEssencial(), this.getPercentualTesteCompleto());
 	}
-	
+
 	public String getEstiloLinha() {
-		
+
 		if (this.getDataInicio() == null || this.getDataFim() == null) {
 			return "";
-		} else if (this.getPercentualReal() == 100D || this.getPercentualReal() > this.getPercentualEsperado()){
+		} else if (this.getPercentualReal() == 100D || this.getPercentualReal() > this.getPercentualEsperado()) {
 			return "atividadeConcluida";
-		} else if (this.getPercentualReal() < this.getPercentualEsperado()){
+		} else if (this.getPercentualReal() < this.getPercentualEsperado()) {
 			return "atividadeVencida";
 		} else {
 			return "";
 		}
-		
+
 	}
 
+	@PrePersist
+	public void prePersist() {
+		idUsuario = Util.obterIdUsuarioLogado();
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		idUsuario = Util.obterIdUsuarioLogado();
+	}
 
 }

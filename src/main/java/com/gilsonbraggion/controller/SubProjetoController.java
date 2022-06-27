@@ -15,6 +15,7 @@ import com.gilsonbraggion.model.Projeto;
 import com.gilsonbraggion.model.SubProjeto;
 import com.gilsonbraggion.repository.ProjetoRepository;
 import com.gilsonbraggion.repository.SubProjetoRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/subProjeto")
@@ -28,13 +29,17 @@ public class SubProjetoController {
 
 	@ModelAttribute
 	public void getLiderados(Model model) {
-		List<Projeto> listagem = repoProjeto.findAll();
+		
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<Projeto> listagem = repoProjeto.findByIdUsuario(idUsuario);
 		model.addAttribute("listagemProjeto", listagem);
 	}
 
 	@GetMapping
 	public String get(Model model) {
-		List<SubProjeto> lista = repo.findAll();
+		
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<SubProjeto> lista = repo.findByIdUsuario(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/subProjeto/listagem";
 	}
@@ -57,8 +62,9 @@ public class SubProjetoController {
 
 		Projeto projeto = repoProjeto.findById(subProjeto.getIdProjeto()).orElse(null);
 		subProjeto.setProjeto(projeto);
-
+		
 		repo.save(subProjeto);
+		
 
 		return "redirect:/subProjeto";
 	}

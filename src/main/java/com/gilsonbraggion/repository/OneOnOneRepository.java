@@ -14,18 +14,19 @@ import com.gilsonbraggion.model.OneOnOne;
 @Repository
 public interface OneOnOneRepository extends JpaRepository<OneOnOne, Long> {
 
-	public List<OneOnOne> findByOrderByDataAsc();
-
-	public List<OneOnOne> findByLideradoOrderByDataAsc(Liderado liderado);
-
-	@Query("select distinct new com.gilsonbraggion.bean.FiltroDatas(month(feed.data), year(feed.data)) from OneOnOne as feed")
-	public List<FiltroDatas> buscarDatas();
-
-	@Query("select feed from OneOnOne feed where month(feed.data) = :mes and year(feed.data) = :ano")
-	public List<OneOnOne> buscarOneonOnePorData(@Param("mes") int mes, @Param("ano") int ano);
-
-	@Query("select feed from OneOnOne feed where realizado = 0 order by data ASC")
-	public List<OneOnOne> buscarNaoRealizados();
 	
-	
+	public List<OneOnOne> findByIdUsuarioOrderByDataAsc(Long idUsuario);
+
+	public List<OneOnOne> findByLideradoAndIdUsuarioOrderByDataAsc(Liderado liderado, Long idUsuario);
+
+	@Query("select distinct new com.gilsonbraggion.bean.FiltroDatas(month(feed.data), year(feed.data)) from OneOnOne as feed where feed.idUsuario = :idUsuario")
+	public List<FiltroDatas> buscarDatas(@Param("idUsuario") Long idUsuario);
+
+	@Query("select feed from OneOnOne feed where month(feed.data) = :mes and year(feed.data) = :ano and feed. idUsuario = :idUsuario")
+	public List<OneOnOne> buscarOneonOnePorData(@Param("mes") int mes, @Param("ano") int ano, @Param("idUsuario") Long idUsuario);
+
+	@Query("select feed from OneOnOne feed where realizado = 0 and feed.idUsuario = :idUsuario order by data ASC")
+	public List<OneOnOne> buscarNaoRealizados(@Param("idUsuario") Long idUsuario);
+
+	public List<OneOnOne> findByIdUsuario(Long idUsuario);
 }
