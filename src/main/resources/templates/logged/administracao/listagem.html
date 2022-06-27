@@ -19,7 +19,6 @@
 				<div class="col-sm-3  form-group">
 					<label for="mes">Usuários</label>
 					<select class="form-select" name="idUsuario">
-						<option label="Selecione..." value="" />
 						<option th:each="item : ${listagemUsuario}" th:utext="${item.userName}" th:value="${item.id}" th:selected="${item.id} == ${usuarioSelecionado}" />
 					</select>
 				</div>
