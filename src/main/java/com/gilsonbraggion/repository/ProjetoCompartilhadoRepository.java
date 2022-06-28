@@ -12,9 +12,9 @@ import com.gilsonbraggion.model.ProjetoCompartilhado;
 @Repository
 public interface ProjetoCompartilhadoRepository extends JpaRepository<ProjetoCompartilhado, Long> {
 
-	@Query(value = "select pc from ProjetoCompartilhado pc where idOwner = :idUsuarioLogado and idSubProjeto = :idSubProjeto")
-	public List<ProjetoCompartilhado> buscarProjetosCompartilhados(@Param("idUsuarioLogado") Long idUsuarioLogado, @Param("idSubProjeto") Long idSubProjeto);
-
+	@Query(value = "select pc from ProjetoCompartilhado pc where idOwner = :idUsuarioLogado or idInvited = :idUsuarioLogado")
+	public List<ProjetoCompartilhado> buscarProjetosCompartilhados(@Param("idUsuarioLogado") Long idUsuarioLogado);
+	
 	public ProjetoCompartilhado findByIdInvitedAndIdSubProjeto(Long idConvidado, Long idSubProjeto);
 
 }
