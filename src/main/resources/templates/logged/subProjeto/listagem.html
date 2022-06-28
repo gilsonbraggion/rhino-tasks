@@ -34,9 +34,9 @@
 				<tr th:each="item : ${listagem}">
 					<td >
 						<span th:utext="${item.projeto.nomeProjeto}"></span>
-						<span th:if="${item.idUsuario != idUsuarioLogado}">
+						<div th:if="${item.idUsuario != idUsuarioLogado}" style="float: right;">
 							<i class="fa fa-share-alt" aria-hidden="true"></i>
-						</span>
+						</div>
 					</td>
 					<td th:utext="${item.nomeSubProjeto}"></td>
 					<td th:utext="${{item.dataInicio}}"></td>
