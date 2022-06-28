@@ -102,4 +102,12 @@ public class AdministracaoController {
 		return "redirect:/administracao";
 	}
 
+	@GetMapping(value = "/zerarCompartilhamento")
+	public String zerarCompartilhamento() {
+		
+		projetoCompRepo.deleteAll();
+		
+		return "redirect:/administracao";
+	}
+	
 }
