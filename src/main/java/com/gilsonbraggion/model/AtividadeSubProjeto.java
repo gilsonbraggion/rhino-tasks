@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
 
 import com.gilsonbraggion.util.Util;
@@ -83,11 +82,6 @@ public class AtividadeSubProjeto {
 
 	@PrePersist
 	public void prePersist() {
-		idUsuario = Util.obterIdUsuarioLogado();
-	}
-
-	@PreUpdate
-	public void preUpdate() {
 		idUsuario = Util.obterIdUsuarioLogado();
 	}
 
