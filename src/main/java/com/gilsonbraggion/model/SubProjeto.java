@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
 
 import com.gilsonbraggion.util.Util;
@@ -41,27 +40,21 @@ public class SubProjeto {
 	private String responsavel;
 
 	private boolean finalizado;
-	
+
 	private boolean atrasado;
 
 	@Column(length = 500)
 	private String observacoes;
-	
+
 	@Transient
 	private Long idProjeto;
-	
-	@Column(nullable = false)
+
+	@Column(nullable = false, updatable = false)
 	private Long idUsuario;
-	
+
 	@PrePersist
 	public void prePersist() {
 		idUsuario = Util.obterIdUsuarioLogado();
 	}
-
-	@PreUpdate
-	public void preUpdate() {
-		idUsuario = Util.obterIdUsuarioLogado();
-	}
-
 
 }
