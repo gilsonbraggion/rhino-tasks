@@ -22,6 +22,7 @@ public class AtividadeSubProjeto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(updatable = false)
 	private Long id;
 
 	@JoinColumn(name = "subProjetoId")
@@ -43,7 +44,7 @@ public class AtividadeSubProjeto {
 
 	private boolean esteiraGerada;
 
-	@Column(nullable = false)
+	@Column(nullable = false, updatable = false)
 	private Long idUsuario;
 
 	@Transient
