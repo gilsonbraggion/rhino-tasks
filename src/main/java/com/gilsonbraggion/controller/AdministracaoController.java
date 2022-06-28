@@ -67,9 +67,9 @@ public class AdministracaoController {
 			bean.setIdProprietario(idUsuarioLogado);
 			bean.setNomeProprietario(usuarioProprietario.getUserName());
 			
-			SubProjeto subProjeto = subRepo.findById(item.getIdSubProjeto()).get();
+			SubProjeto subProjeto = subRepo.findById(item.getIdSubProjeto()).orElse(null);
 			bean.setIdSubProjeto(idUsuarioLogado);
-			bean.setNomeSubProjeto(subProjeto.getNomeSubProjeto());
+			bean.setNomeSubProjeto(subProjeto != null ?  subProjeto.getNomeSubProjeto() : "");
 			
 			listaRetorno.add(bean);
 		}
