@@ -14,7 +14,6 @@ import com.gilsonbraggion.model.AtividadeSubProjeto;
 import com.gilsonbraggion.model.SubProjeto;
 import com.gilsonbraggion.repository.AtividadeSubProjetoRepository;
 import com.gilsonbraggion.repository.SubProjetoRepository;
-import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/grafico")
@@ -39,8 +38,7 @@ public class GraficoController {
 
 	@PostMapping(value = "/buscarResumoAtividadeSubProjeto")
 	public String buscarResumoAtividadesSubProjeto(Long idSubProjeto, Model model) {
-		Long idUsuario = Util.obterIdUsuarioLogado();
-		List<AtividadeSubProjeto> listagemAtividades = ativRepo.buscarAtividadesPorSubProjeto(idSubProjeto, idUsuario);
+		List<AtividadeSubProjeto> listagemAtividades = ativRepo.buscarAtividadesPorSubProjeto(idSubProjeto);
 
 		model.addAttribute("listagemAtividades", listagemAtividades);
 		model.addAttribute("subSelecionado", idSubProjeto);

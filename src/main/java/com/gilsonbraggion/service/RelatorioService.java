@@ -18,9 +18,9 @@ public class RelatorioService {
 	@Autowired
 	private AtividadeSubProjetoRepository atividadeSub;
 
-	public List<ResumoAtividadeSubProjetoBean> buscarResumoAtividadeSubProjeto(Long idSubProjeto, Long idUsuario) {
+	public List<ResumoAtividadeSubProjetoBean> buscarResumoAtividadeSubProjeto(Long idSubProjeto) {
 
-		List<AtividadeSubProjeto> retorno = atividadeSub.buscarAtividadesPorSubProjeto(idSubProjeto, idUsuario);
+		List<AtividadeSubProjeto> retorno = atividadeSub.buscarAtividadesPorSubProjeto(idSubProjeto);
 
 		double totalDesenvolvimento = 0d;
 		double totalInicial = 0d;

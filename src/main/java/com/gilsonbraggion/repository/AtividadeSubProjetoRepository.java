@@ -12,8 +12,8 @@ import com.gilsonbraggion.model.AtividadeSubProjeto;
 @Repository
 public interface AtividadeSubProjetoRepository extends JpaRepository<AtividadeSubProjeto, Long> {
 
-	@Query(value = "select atv from AtividadeSubProjeto atv where atv.subProjeto.id = :idSubProjeto and atv.idUsuario = :idUsuario order by atv.dataInicio ASC")
-	public List<AtividadeSubProjeto> buscarAtividadesPorSubProjeto(@Param("idSubProjeto") Long idSubProjeto, @Param("idUsuario") Long idUsuario);
-
+	@Query(value = "select atv from AtividadeSubProjeto atv where atv.subProjeto.id = :idSubProjeto order by atv.dataInicio ASC")
+	public List<AtividadeSubProjeto> buscarAtividadesPorSubProjeto(@Param("idSubProjeto") Long idSubProjeto);
+	
 	public List<AtividadeSubProjeto> findByIdUsuario(Long idUsuario);
 }

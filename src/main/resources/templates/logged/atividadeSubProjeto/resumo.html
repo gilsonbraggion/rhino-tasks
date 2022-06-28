@@ -34,7 +34,7 @@
 		<div class="row">
 			<div class="form-group col-sm-2 littleTopSpace" th:each="item : ${listagemAtividades}">
 				<div class="card">
-					<div class="card-header text-center" th:utext="${item.nomeAtividade}" style="font-weight: bold;">Featured</div>
+					<div class="card-header text-center" th:utext="${item.nomeAtividade}" style="font-weight: bold; color: white">Featured</div>
 					<ul class="list-group list-group-flush">
 						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Esteira Gerada ${item.esteiraGerada ? 'Sim' : 'Não'}|">An item</li>
 						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Desenvolvimento: ${{item.percentualDesenvolvimento}} %|">An item</li>

@@ -39,7 +39,7 @@ public class SubProjetoController {
 	public String get(Model model) {
 		
 		Long idUsuario = Util.obterIdUsuarioLogado();
-		List<SubProjeto> lista = repo.findByIdUsuario(idUsuario);
+		List<SubProjeto> lista = repo.buscarSubrojetosMeusCompartilhados(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/subProjeto/listagem";
 	}
