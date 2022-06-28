@@ -12,8 +12,11 @@ import com.gilsonbraggion.model.AtividadeSubProjeto;
 @Repository
 public interface AtividadeSubProjetoRepository extends JpaRepository<AtividadeSubProjeto, Long> {
 
+	public List<AtividadeSubProjeto> findByIdUsuario(Long idUsuario);
+
 	@Query(value = "select atv from AtividadeSubProjeto atv where atv.subProjeto.id = :idSubProjeto order by atv.dataInicio ASC")
 	public List<AtividadeSubProjeto> buscarAtividadesPorSubProjeto(@Param("idSubProjeto") Long idSubProjeto);
 	
-	public List<AtividadeSubProjeto> findByIdUsuario(Long idUsuario);
+	@Query("SELECT ativ FROM SubProjeto sb LEFT JOIN AtividadeSubProjeto ativ ON ativ.subProjeto.id = sb.id LEFT JOIN ProjetoCompartilhado pc ON pc.idSubProjeto = sb.id where sb.idUsuario = :idUsuarioLogado or pc.idInvited = :idUsuarioLogado")
+	public List<AtividadeSubProjeto> buscarAtividadesCompartilhadas(@Param("idUsuarioLogado") Long idUsuarioLogado);
 }

@@ -14,6 +14,7 @@ import com.gilsonbraggion.model.AtividadeSubProjeto;
 import com.gilsonbraggion.model.SubProjeto;
 import com.gilsonbraggion.repository.AtividadeSubProjetoRepository;
 import com.gilsonbraggion.repository.SubProjetoRepository;
+import com.gilsonbraggion.util.Util;
 
 @Controller
 @RequestMapping(value = "/grafico")
@@ -27,7 +28,7 @@ public class GraficoController {
 
 	@ModelAttribute
 	public void getSubProjetos(Model model) {
-		List<SubProjeto> listaSubProjetos = subRepo.findAll();
+		List<SubProjeto> listaSubProjetos = subRepo.buscarSubrojetosMeusCompartilhados(Util.obterIdUsuarioLogado());
 		model.addAttribute("listaSubProjeto", listaSubProjetos);
 	}
 

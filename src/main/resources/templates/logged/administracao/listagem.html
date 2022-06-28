@@ -37,25 +37,30 @@
 
 		<form th:action="@{/administracao/compartilhar}" th:method="POST" class="form">
 
-			<div class="row">
-				<div class="col-sm-2 form-group">
-					<label>Usuários</label>
-					<select class="form-select" name="idUsuarioInvited">
-						<option th:each="item : ${listagemUsuario}" th:label="${item.userName}" th:value="${item.id}" th:selected="${item.id == idUsuarioLogado}" />
-					</select>
+			<div class="card">
+				<div class="card-header" style="font-weight: bold; color: white;">Compartilhar Sub Projetos</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-sm-3 form-group">
+							<label>Usuários</label>
+							<select class="form-select" name="idUsuarioInvited">
+								<option th:each="item : ${listagemUsuario}" th:label="${item.userName}" th:value="${item.id}" th:selected="${item.id == idUsuarioLogado}" />
+							</select>
+						</div>
+
+						<div class="col-sm-3 form-group">
+							<label>Sub projetos</label>
+							<select class="form-select" name="idSubProjeto">
+								<option th:each="item : ${listagemSubProjetos}" th:label="${item.nomeSubProjeto}" th:value="${item.id}" />
+							</select>
+						</div>
+
+						<div class="form-group col-sm-3" style="padding-top: 22px;">
+							<button class="btn btn-primary" type="submit">Compartilhar</button>
+						</div>
+					</div>
 				</div>
 
-				<div class="col-sm-2 form-group">
-					<label>Sub projetos</label>
-					<select class="form-select" name="idSubProjeto">
-						<option th:each="item : ${listagemSubProjetos}" th:label="${item.nomeSubProjeto}" th:value="${item.id}" />
-					</select>
-				</div>
-				
-			<div class="form-group col-sm-3" style="padding-top: 22px;">
-				<button class="btn btn-primary" type="submit">Associar</button>
-			</div>
-				
 			</div>
 
 		</form>

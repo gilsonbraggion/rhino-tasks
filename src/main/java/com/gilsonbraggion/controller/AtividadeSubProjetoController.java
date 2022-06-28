@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gilsonbraggion.model.AtividadeSubProjeto;
-import com.gilsonbraggion.model.Projeto;
 import com.gilsonbraggion.model.SubProjeto;
 import com.gilsonbraggion.repository.AtividadeSubProjetoRepository;
 import com.gilsonbraggion.repository.SubProjetoRepository;
@@ -34,13 +33,12 @@ public class AtividadeSubProjetoController {
 		List<SubProjeto> listagem = repoSub.buscarSubrojetosMeusCompartilhados(idUsuario);
 		model.addAttribute("listagemSubProjeto", listagem);
 	}
-	
 
 	@GetMapping
 	public String get(Model model) {
 		Long idUsuario = Util.obterIdUsuarioLogado();
 
-		List<AtividadeSubProjeto> lista = repo.findByIdUsuario(idUsuario);
+		List<AtividadeSubProjeto> lista = repo.buscarAtividadesCompartilhadas(idUsuario);
 		model.addAttribute("listagem", lista);
 		return "logged/atividadeSubProjeto/listagem";
 	}
