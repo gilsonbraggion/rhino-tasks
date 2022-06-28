@@ -22,7 +22,6 @@ public class AtividadeSubProjeto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(updatable = false)
 	private Long id;
 
 	@JoinColumn(name = "subProjetoId")

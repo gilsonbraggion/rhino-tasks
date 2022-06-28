@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gilsonbraggion.model.AtividadeSubProjeto;
+import com.gilsonbraggion.model.Projeto;
 import com.gilsonbraggion.model.SubProjeto;
 import com.gilsonbraggion.repository.AtividadeSubProjetoRepository;
 import com.gilsonbraggion.repository.SubProjetoRepository;
@@ -25,6 +27,14 @@ public class AtividadeSubProjetoController {
 
 	@Autowired
 	private SubProjetoRepository repoSub;
+	
+	@ModelAttribute
+	public void getSubProjetos(Model model) {
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		List<SubProjeto> listagem = repoSub.buscarSubrojetosMeusCompartilhados(idUsuario);
+		model.addAttribute("listagemSubProjeto", listagem);
+	}
+	
 
 	@GetMapping
 	public String get(Model model) {
