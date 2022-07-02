@@ -58,3 +58,8 @@ h3 {
 	position: sticky;
 	top: 0
 }
+
+.dataTables_filter {
+	float: left !important;	
+	margin-bottom: 20px;
+}

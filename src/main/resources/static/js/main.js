@@ -2,6 +2,16 @@ $(document).ready(function(e) {
 
 	console.log("page is loading now");
 
+	$('.tabelaFiltro').DataTable({
+		pagingType: 'full_numbers',
+		paging: false,
+		"info": false,
+		"oLanguage": {
+			"sSearch": "Buscar: "
+		}
+	});
+
+
 	var dayNames = ["Domingo", "Segunda", "Ter&ccedil;a", "Quarta", "Quinta",
 		"Sexta", "S&aacute;bado", "Domingo"];
 	var dayNamesMin = ["D", "S", "T", "Q", "Q", "S", "S", "D"];
