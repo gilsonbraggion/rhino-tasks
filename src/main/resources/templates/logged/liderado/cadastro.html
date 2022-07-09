@@ -21,26 +21,23 @@
 				<span th:utext="${mensagem}"></span>
 			</div>
 
-			<div class="row">
-				<div class="col-sm-4  form-group">
+			<div class="row gy-3">
+				<div class="col-sm-4 form-group">
 					<label>Nome</label>
 					<input type="text" th:field="*{nome}" class="form-control" autofocus="autofocus" />
 				</div>
 
-				<div class="col-sm-4  form-group">
+				<div class="col-sm-4 form-group">
 					<label>Cargo</label>
 					<input type="text" th:field="*{cargo}" class="form-control" autofocus="autofocus" />
 				</div>
 
-				<div class="col-sm-4  form-group">
+				<div class="col-sm-4 form-group">
 					<label>Observações</label>
 					<input type="text" th:field="*{observacoes}" class="form-control" />
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="form-group text-center">
-					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Salvar</button>
 				</div>
 			</div>
 

@@ -21,12 +21,12 @@
 				<span th:utext="${mensagem}"></span>
 			</div>
 
-			<div class="row">
+			<div class="row gy-3">
 				<div class="col-sm-4 form-group">
 					<label>Data</label>
 					<input type="text" th:field="*{{data}}" class="form-control datepicker" autocomplete="off" />
 				</div>
-			
+
 				<div class="col-sm-2 form-group">
 					<label>Hora Início</label>
 					<input type="text" th:field="*{horaInicio}" class="form-control mascaraHora" />
@@ -36,36 +36,30 @@
 					<label>Hora Fim</label>
 					<input type="text" th:field="*{horaFim}" class="form-control mascaraHora" />
 				</div>
-			
+
 				<div class="col-sm-2 form-group">
 					<label>Liderado</label>
 					<select class="form-select" name="idLiderado">
 						<option th:each="item : ${listagemLiderado}" th:label="${item.nome}" th:value="${item.id}" th:selected="${item.id == oneOnOne.liderado?.id}" />
 					</select>
 				</div>
-				
+
 				<div class="col-sm-2 form-group">
 					<label>Realizado</label>
 					<select class="form-select" name="realizado">
-						<option value="false" >Não</option>
-						<option value="true"  th:selected="*{realizado}">Sim</option>
+						<option value="false">Não</option>
+						<option value="true" th:selected="*{realizado}">Sim</option>
 					</select>
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="col-sm-6 form-group">
 					<label>Introdução</label>
-					<textarea th:field="*{introducao}" class="form-control" rows="6" maxlength="400" ></textarea>
+					<textarea th:field="*{introducao}" class="form-control" rows="6" maxlength="400"></textarea>
 				</div>
 
 				<div class="col-sm-6 form-group">
 					<label>Pontos Positivos</label>
 					<textarea th:field="*{pontosPositivos}" class="form-control" rows="6" maxlength="400"></textarea>
 				</div>
-			</div>
-			
-			<div class="row">
 				<div class="col-sm-6 form-group">
 					<label>Melhorias</label>
 					<textarea th:field="*{melhorias}" class="form-control" rows="6" maxlength="400"></textarea>
@@ -75,11 +69,8 @@
 					<label>Feed Back Reverso</label>
 					<textarea th:field="*{feedBackReverso}" class="form-control" rows="6" maxlength="400"></textarea>
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="form-group text-center">
-					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Salvar</button>
 				</div>
 			</div>
 

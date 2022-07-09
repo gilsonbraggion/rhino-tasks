@@ -21,7 +21,7 @@
 				<span th:utext="${mensagem}"></span>
 			</div>
 
-			<div class="row">
+			<div class="row gy-3">
 				<div class="col-sm-3 form-group">
 					<label>Sub Projeto</label>
 					<select class="form-select" name="idSubProjeto">
@@ -49,11 +49,6 @@
 					<label>Responsável</label>
 					<input type="text" th:field="*{responsavel}" class="form-control" />
 				</div>
-				
-			
-			</div>
-
-			<div class="row">
 				<div class="col-sm-2 form-group">
 					<label>Esteira</label>
 					<select class="form-select" name="esteiraGerada">
@@ -86,11 +81,8 @@
 					<label>% Avanço real</label>
 					<input type="text" th:field="*{{percentualReal}}" class="form-control js-decimal" disabled="disabled"/>
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="form-group text-center">
-					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Salvar</button>
 				</div>
 			</div>
 

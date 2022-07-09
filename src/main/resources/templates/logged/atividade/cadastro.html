@@ -22,21 +22,16 @@
 				<span th:utext="${mensagem}"></span>
 			</div>
 
-			<div class="row">
-			
+			<div class="row gy-3">
 				<div class="col-sm-6 form-group">
 					<label>Texto</label>
-					<textarea th:field="*{texto}" class="form-control" autofocus="autofocus" rows="6" ></textarea>
+					<textarea th:field="*{texto}" class="form-control" autofocus="autofocus" rows="6"></textarea>
 				</div>
-			
+
 				<div class="col-sm-6 form-group">
 					<label>Observações</label>
-					<textarea th:field="*{observacoes}" class="form-control" rows="6" ></textarea>
+					<textarea th:field="*{observacoes}" class="form-control" rows="6"></textarea>
 				</div>
-			</div>
-
-
-			<div class="row">
 				<div class="col-sm-4 form-group">
 					<label>Envolvidos</label>
 					<input type="text" th:field="*{envolvidos}" class="form-control" />
@@ -51,27 +46,24 @@
 
 				<div class="col-sm-2 form-group">
 					<label>Data execução </label>
-					<input type="text" th:field="*{{dataExecucao}}" class="form-control datepicker" autocomplete="off"/>
+					<input type="text" th:field="*{{dataExecucao}}" class="form-control datepicker" autocomplete="off" />
 				</div>
 
 				<div class="col-sm-2 form-group">
 					<label>Data finalização</label>
-					<input type="text" th:field="*{{dataFinalizacao}}" class="form-control datepicker" autocomplete="off"/>
+					<input type="text" th:field="*{{dataFinalizacao}}" class="form-control datepicker" autocomplete="off" />
 				</div>
 
 				<div class="col-sm-2 form-group">
 					<label>Finalizado</label>
 					<select class="form-select" name="finalizado">
-						<option value="false" >Não</option>
-						<option value="true"  th:selected="*{finalizado}">Sim</option>
+						<option value="false">Não</option>
+						<option value="true" th:selected="*{finalizado}">Sim</option>
 					</select>
 
 				</div>
-			</div>
-
-			<div class="row">
 				<div class="form-group text-center">
-					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Salvar</button>
 				</div>
 			</div>
 

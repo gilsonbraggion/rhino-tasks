@@ -21,7 +21,7 @@
 				<span th:utext="${mensagem}"></span>
 			</div>
 
-			<div class="row">
+			<div class="row gy-3">
 				<div class="col-sm-3 form-group">
 					<label>Projeto</label>
 					<select class="form-select" name="idProjeto">
@@ -65,20 +65,15 @@
 						<option value="false" >Não</option>
 						<option value="true"  th:selected="*{atrasado}">Sim</option>
 					</select>
-
 				</div>
-			</div>
 
-			<div class="row">
 				<div class="col-sm-12  form-group">
 					<label>Observações</label>
 					<textarea th:field="*{observacoes}" class="form-control" rows="5" maxlength="500" ></textarea>
 				</div>
-			</div>
-			
-			<div class="row">
+
 				<div class="form-group text-center">
-					<button class="btn  btn-primary littleTopSpace" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Salvar</button>
 				</div>
 			</div>
 
