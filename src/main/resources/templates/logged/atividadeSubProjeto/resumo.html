@@ -36,7 +36,7 @@
 				<div class="card">
 					<div class="card-header text-center" th:utext="${item.nomeAtividade}" style="font-weight: bold; color: white">Featured</div>
 					<ul class="list-group list-group-flush">
-						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Esteira Gerada ${item.esteiraGerada ? 'Sim' : 'Não'}|">An item</li>
+						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Esteira Gerada: ${item.esteiraGerada ? 'Sim' : 'Não'}|">An item</li>
 						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Desenvolvimento: ${{item.percentualDesenvolvimento}} %|">An item</li>
 						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Teste Essencial: ${{item.percentualTesteEssencial}} %|">An item</li>
 						<li th:classappend="${item.estiloLinha}" class="list-group-item" th:utext="|Teste Completo: ${{item.percentualTesteCompleto}} %|">An item</li>
