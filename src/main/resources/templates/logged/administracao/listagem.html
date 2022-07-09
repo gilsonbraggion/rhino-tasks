@@ -12,59 +12,59 @@
 
 	<div class="container-fluid">
 
+		<div class="row gy-3">
+			<table class="table table-responsive table-bordered table-striped tabelaFiltro">
+				<thead class="headerFixo">
+					<tr>
+						<th class="col-sm-1">Nome proprietário</th>
+						<th class="col-sm-1">Recurso compartilhado</th>
+						<th class="col-sm-1">Sub projeto</th>
+						<th class="col-sm-1">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${listagemCompartilhados}">
+						<td th:utext="${item.nomeProprietario}"></td>
+						<td th:utext="${item.nomeConvidado}"></td>
+						<td th:utext="${item.nomeSubProjeto}"></td>
+						<td class="text-center">
+							<a th:href="@{/administracao/removerCompartilhamento} +'?idConvidado=' +${item.idConvidado}+'&idSubProjeto=' +${item.idSubProjeto}"> <i class="fa fa-minus" style="padding-right: 10px;"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 
-		<table class="table table-responsive table-bordered table-striped tabelaFiltro">
-			<thead class="headerFixo">
-				<tr>
-					<th class="col-sm-1">Nome proprietário</th>
-					<th class="col-sm-1">Recurso compartilhado</th>
-					<th class="col-sm-1">Sub projeto</th>
-					<th class="col-sm-1">Opções</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="item : ${listagemCompartilhados}">
-					<td th:utext="${item.nomeProprietario}"></td>
-					<td th:utext="${item.nomeConvidado}"></td>
-					<td th:utext="${item.nomeSubProjeto}"></td>
-					<td class="text-center">
-						<a th:href="@{/administracao/removerCompartilhamento} +'?idConvidado=' +${item.idConvidado}+'&idSubProjeto=' +${item.idSubProjeto}"> <i class="fa fa-minus" style="padding-right: 10px;"></i></a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
 
+			<form th:action="@{/administracao/compartilhar}" th:method="POST" class="form">
 
-		<form th:action="@{/administracao/compartilhar}" th:method="POST" class="form">
+				<div class="card">
+					<div class="card-header" style="font-weight: bold; color: rgb(255, 255, 255);">Compartilhar Sub Projetos</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-3 form-group">
+								<label>Usuários</label>
+								<select class="form-select" name="idUsuarioInvited">
+									<option th:each="item : ${listagemUsuario}" th:label="${item.userName}" th:value="${item.id}" th:selected="${item.id == idUsuarioLogado}" />
+								</select>
+							</div>
 
-			<div class="card">
-				<div class="card-header" style="font-weight: bold; color: rgb(255, 255, 255);">Compartilhar Sub Projetos</div>
-				<div class="card-body">
-					<div class="row">
-						<div class="col-sm-3 form-group">
-							<label>Usuários</label>
-							<select class="form-select" name="idUsuarioInvited">
-								<option th:each="item : ${listagemUsuario}" th:label="${item.userName}" th:value="${item.id}" th:selected="${item.id == idUsuarioLogado}" />
-							</select>
-						</div>
+							<div class="col-sm-3 form-group">
+								<label>Sub projetos</label>
+								<select class="form-select" name="idSubProjeto">
+									<option th:each="item : ${listagemSubProjetos}" th:label="${item.nomeSubProjeto}" th:value="${item.id}" />
+								</select>
+							</div>
 
-						<div class="col-sm-3 form-group">
-							<label>Sub projetos</label>
-							<select class="form-select" name="idSubProjeto">
-								<option th:each="item : ${listagemSubProjetos}" th:label="${item.nomeSubProjeto}" th:value="${item.id}" />
-							</select>
-						</div>
-
-						<div class="form-group col-sm-3" style="padding-top: 22px;">
-							<button class="btn btn-primary" type="submit">Compartilhar</button>
+							<div class="form-group col-sm-3" style="padding-top: 22px;">
+								<button class="btn btn-primary" type="submit">Compartilhar</button>
+							</div>
 						</div>
 					</div>
+
 				</div>
 
-			</div>
-
-		</form>
-
+			</form>
+		</div>
 
 	</div>
 	<!-- /.container -->
