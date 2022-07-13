@@ -26,7 +26,7 @@ public class HomeController {
 	@GetMapping(value = { "/home" })
 	public String home(Model model) {
 		Long idUsuario = Util.obterIdUsuarioLogado();
-		List<TipoAtividade> listagemTipo = tipoRepo.findAll();
+		List<TipoAtividade> listagemTipo = tipoRepo.findByIdUsuario(Util.obterIdUsuarioLogado());
 
 		List<TipoAtividadeBean> listaInternaBean = new ArrayList<>();
 
