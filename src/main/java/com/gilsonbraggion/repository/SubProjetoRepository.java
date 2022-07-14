@@ -17,7 +17,7 @@ public interface SubProjetoRepository extends JpaRepository<SubProjeto, Long> {
 
 	public List<SubProjeto> findByProjetoAndIdUsuario(Projeto projeto, Long idUsuario);
 	
-	@Query(" SELECT sb FROM SubProjeto sb LEFT JOIN ProjetoCompartilhado pc ON pc.idSubProjeto = sb.id where sb.idUsuario = :idUsuarioLogado or pc.idInvited = :idUsuarioLogado")
+	@Query(" SELECT sb FROM SubProjeto sb LEFT JOIN ProjetoCompartilhado pc ON pc.idSubProjeto = sb.id where sb.idUsuario = :idUsuarioLogado or pc.idInvited = :idUsuarioLogado order by sb.dataInicio ASC")
 	public List<SubProjeto> buscarSubrojetosMeusCompartilhados(@Param("idUsuarioLogado") Long idUsuarioLogado); 
 
 }
