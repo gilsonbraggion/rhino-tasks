@@ -66,6 +66,10 @@ public class HomeController {
 
 		Long idUsuario = Util.obterIdUsuarioLogado();
 		
+		if (idTipoAtividade == null) {
+			idTipoAtividade = (Long) model.getAttribute("idTipoAtividade");
+		}
+		
 		TipoAtividade tipoAtividade = tipoRepo.findById(idTipoAtividade).orElse(null);
 
 		List<Atividade> listagem = ativRepo.buscarAtividadesPorTipoAtividadeAtivos(idTipoAtividade, idUsuario);

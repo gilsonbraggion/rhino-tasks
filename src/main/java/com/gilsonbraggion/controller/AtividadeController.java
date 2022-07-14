@@ -88,7 +88,7 @@ public class AtividadeController {
 	}
 
 	@PostMapping(value = "/salvar")
-	public String salvar(Atividade atividade, Model model) {
+	public String salvar(Atividade atividade, Model model, RedirectAttributes atributo) {
 
 		TipoAtividade tipoAtividade = repoTipo.findById(atividade.getIdTipoAtividade()).orElse(null);
 		atividade.setTipoAtividade(tipoAtividade);
@@ -96,7 +96,8 @@ public class AtividadeController {
 		repo.save(atividade);
 
 		if (atividade.isFromHome()) {
-			return "redirect:/home";
+			atributo.addFlashAttribute("idTipoAtividade", tipoAtividade.getId());
+			return "redirect:/home/listagemHome";
 		} else {
 			return "redirect:/atividade";
 		}
