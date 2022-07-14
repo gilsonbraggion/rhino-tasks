@@ -8,7 +8,9 @@ $(document).ready(function(e) {
 		"info": false,
 		"oLanguage": {
 			"sSearch": "Buscar: "
-		}
+		},
+		"order": [],
+		"aaSorting": []
 	});
 
 
