@@ -46,6 +46,7 @@ public class HomeController {
 
 			if (!bean.getListaAtividades().isEmpty()) {
 				bean.setDataMaisProxima(Util.getDateString(bean.getListaAtividades().get(0).getDataExecucao()));
+				bean.setQuantidadeAtividades(bean.getListaAtividades().size());
 			}
 
 			listaInternaBean.add(bean);

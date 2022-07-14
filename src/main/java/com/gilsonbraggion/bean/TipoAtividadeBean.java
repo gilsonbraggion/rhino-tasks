@@ -14,4 +14,6 @@ public class TipoAtividadeBean {
 	
 	private String dataMaisProxima;
 	private List<Atividade> listaAtividades;
+	
+	private Integer quantidadeAtividades;
 }
