@@ -7,14 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gilsonbraggion.bean.TipoAtividadeBean;
+import com.gilsonbraggion.model.Atividade;
 import com.gilsonbraggion.model.TipoAtividade;
 import com.gilsonbraggion.repository.AtividadeRepository;
 import com.gilsonbraggion.repository.TipoAtividadeRepository;
 import com.gilsonbraggion.util.Util;
 
 @Controller
+@RequestMapping(value = "/home")
 public class HomeController {
 
 	@Autowired
@@ -23,8 +27,8 @@ public class HomeController {
 	@Autowired
 	private TipoAtividadeRepository tipoRepo;
 
-	@GetMapping(value = { "/home" })
-	public String home(Model model) {
+	@ModelAttribute
+	public void getListagem(Model model) {
 		Long idUsuario = Util.obterIdUsuarioLogado();
 		List<TipoAtividade> listagemTipo = tipoRepo.findByIdUsuario(Util.obterIdUsuarioLogado());
 
@@ -49,6 +53,23 @@ public class HomeController {
 		}
 
 		model.addAttribute("listaPainel", listaInternaBean);
+	}
+
+	@GetMapping
+	public String home(Model model) {
+		return "home";
+	}
+
+	@GetMapping(value = "/listagemHome")
+	public String listagemHome(Long idTipoAtividade, Model model) {
+
+		Long idUsuario = Util.obterIdUsuarioLogado();
+		
+		TipoAtividade tipoAtividade = tipoRepo.findById(idTipoAtividade).orElse(null);
+
+		List<Atividade> listagem = ativRepo.buscarAtividadesPorTipoAtividadeAtivos(idTipoAtividade, idUsuario);
+		model.addAttribute("listagemAtividades", listagem);
+		model.addAttribute("tipoAtividade", tipoAtividade);
 
 		return "home";
 	}
