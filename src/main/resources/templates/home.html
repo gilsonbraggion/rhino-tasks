@@ -12,8 +12,8 @@
 			<div class="form-group col-sm-3 littleTopSpace" th:each="item : ${listaPainel}">
 				<div class="card">
 					<div class="card-header text-center" style="font-weight: bold; color: white" th:utext="${item.nomeTipoAtividade}"></div>
-					<h5 class="card-title" th:utext="|Próxima atividade: ${item.dataMaisProxima}|"></h5>
-					<p class="card-text" th:utext="|Total de atividades: ${item.quantidadeAtividades}|"></p>
+					<h5 th:if="${item.dataMaisProxima}" class="card-title" th:utext="|Próxima atividade: ${item.dataMaisProxima}|"></h5>
+					<p th:if="${item.quantidadeAtividades}" class="card-text" th:utext="|Total de atividades: ${item.quantidadeAtividades}|"></p>
 					<div class="text-center" style="margin-bottom: 15px;">
 						<a class="btn btn-primary col-md-4" th:href="@{/home/listagemHome} + '?idTipoAtividade=' + ${item.idTipoAtividade}"> <i class="fa fa-list" aria-hidden="true"></i></a> 
 						<a class="btn btn-primary col-md-4" th:href="@{/atividade/atividadeFromHome} + '?idTipoAtividade=' + ${item.idTipoAtividade}"> <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
