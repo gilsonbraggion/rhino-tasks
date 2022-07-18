@@ -1,6 +1,8 @@
 package com.gilsonbraggion.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +47,26 @@ public class HomeController {
 			bean.setListaAtividades(ativRepo.buscarAtividadesPorTipoAtividadeAtivos(tipoAtividade.getId(), idUsuario));
 
 			if (!bean.getListaAtividades().isEmpty()) {
-				bean.setDataMaisProxima(Util.getDateString(bean.getListaAtividades().get(0).getDataExecucao()));
+				bean.setDataMaisProxima(bean.getListaAtividades().get(0).getDataExecucao());
 				bean.setQuantidadeAtividades(bean.getListaAtividades().size());
 			}
 
 			listaInternaBean.add(bean);
 
 		}
+		
+		Comparator<TipoAtividadeBean> comparator = (ativ1, ativ2) -> {
+			
+			if (ativ1.getDataMaisProxima() == null) {
+				return -1;
+			} else if (ativ2.getDataMaisProxima() == null) {
+				return 1;
+			} else {
+				return ativ1.getDataMaisProxima().compareTo(ativ2.getDataMaisProxima());
+			}
+		};
+		
+		Collections.sort(listaInternaBean, comparator);
 
 		model.addAttribute("listaPainel", listaInternaBean);
 	}
