@@ -10,9 +10,11 @@ public class FiltroDatas {
 	private int ano;
 	
 	public FiltroDatas(int mes, int ano) {
+		
 		super();
 		this.mes = mes;
 		this.ano = ano;
+		
 	}
 	
 }
